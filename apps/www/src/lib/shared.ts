@@ -12,10 +12,10 @@ export const gitConfig = {
 
 export const githubUrl = `https://github.com/${gitConfig.user}/${gitConfig.repo}`;
 
-/** The published docs site (GitHub Pages). */
-export const siteUrl = "https://zupy-ui.github.io/zupy";
+/** The published docs site (GitHub Pages, deployed to the zupy-ui.github.io repo). */
+export const siteUrl = "https://zupy-ui.github.io";
 
-/** Where the app is served from: "/" locally, "/zupy/" on GitHub Pages. Always ends with "/". */
+/** Where the app is served from: "/" unless built with BASE_PATH. Always ends with "/". */
 export const basePath = import.meta.env.BASE_URL;
 
 /**

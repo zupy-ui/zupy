@@ -11,14 +11,23 @@ import { defineConfig } from "vite";
 const pkg = (path: string) =>
 	fileURLToPath(new URL(`../../packages/${path}`, import.meta.url));
 
-/** "/" locally; set BASE_PATH=/zupy/ for GitHub Pages. */
+/** "/" by default (the site is served at the domain root). Set BASE_PATH to host it in a subfolder. */
 const base = process.env.BASE_PATH ?? "/";
 
-// OG images are binary, so Nitro prerenders them (TanStack's prerender saves responses as text).
-const imageRoutes: string[] = [];
+const docSlugs: string[][] = [];
 for await (const entry of glob("**/*.mdx", { cwd: "content/docs" })) {
-	imageRoutes.push(`/og/docs/${[...getSlugs(entry), "image.webp"].join("/")}`);
+	docSlugs.push(getSlugs(entry));
 }
+
+// OG images are binary, so Nitro prerenders them (TanStack's prerender saves responses as text).
+const imageRoutes = docSlugs.map(
+	(slugs) => `/og/docs/${[...slugs, "image.webp"].join("/")}`,
+);
+
+// The Markdown copy of every page, for AI tools. Nothing links to most of them.
+const markdownPages = docSlugs.map((slugs) => ({
+	path: `/docs/${slugs.length ? slugs.join("/") : "index"}.md`,
+}));
 
 export default defineConfig({
 	base,
@@ -42,6 +51,7 @@ export default defineConfig({
 				{ path: "/api/search" },
 				{ path: "/llms.txt" },
 				{ path: "/llms-full.txt" },
+				...markdownPages,
 			],
 		}),
 		react(),
