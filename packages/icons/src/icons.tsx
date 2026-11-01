@@ -90,3 +90,22 @@ export const StarIcon = createIcon("StarIcon", {
 export const UserIcon = createIcon("UserIcon", {
 	body: "M12 3.5a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM4.5 20a7.5 6 0 0 1 15 0z",
 });
+
+/**
+ * Every icon by name, for galleries and lookups by string.
+ * In app code import icons by name instead, so unused ones are left out of the bundle.
+ */
+export const icons = {
+	BellIcon,
+	HeartIcon,
+	HelloIcon,
+	HomeIcon,
+	InstallIcon,
+	RobotIcon,
+	SearchIcon,
+	StarIcon,
+	ThemeIcon,
+	UserIcon,
+};
+
+export type IconName = keyof typeof icons;
