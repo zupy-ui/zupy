@@ -1,0 +1,90 @@
+@import "tailwindcss";
+@import "@zupy/ui/styles.css";
+
+@source "./";
+
+/* Self-hosted copies of the token fonts, so a render never depends on the network. */
+@font-face {
+	font-family: "Fredoka";
+	font-style: normal;
+	font-weight: 300 700;
+	src: url("@fontsource-variable/fredoka/files/fredoka-latin-wght-normal.woff2")
+		format("woff2-variations");
+}
+
+@font-face {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 100 900;
+	src: url("@fontsource-variable/inter/files/inter-latin-wght-normal.woff2")
+		format("woff2-variations");
+}
+
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 100 800;
+	src: url("@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2")
+		format("woff2-variations");
+}
+
+html,
+body {
+	margin: 0;
+	background: #000;
+	overflow: hidden;
+}
+
+/*
+ * Every frame is computed from the clock, so CSS transitions and keyframes are switched off on
+ * the stage. Otherwise a captured frame would depend on how long the browser took to get there.
+ * These rules are unlayered, so they beat Tailwind's utilities without !important.
+ */
+.stage,
+.stage *,
+.stage *::before,
+.stage *::after {
+	transition: none;
+	animation: none;
+}
+
+.stage {
+	position: relative;
+	width: 1920px;
+	height: 1080px;
+	overflow: hidden;
+	transform-origin: 0 0;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Paper dot grid, drawn in the theme's border color. */
+.dots {
+	background-image: radial-gradient(
+		circle,
+		var(--zupy-border) 2.5px,
+		transparent 3px
+	);
+	background-size: 48px 48px;
+}
+
+/* Hooks into component internals the trailer animates by hand (the components keep their API). */
+.anim-switch > span {
+	translate: var(--thumb-x, 0) 0;
+}
+
+.anim-indicator > span {
+	scale: var(--indicator-scale, 1);
+}
+
+.anim-pin > input:nth-child(1) {
+	scale: var(--slot-1, 1);
+}
+.anim-pin > input:nth-child(2) {
+	scale: var(--slot-2, 1);
+}
+.anim-pin > input:nth-child(3) {
+	scale: var(--slot-3, 1);
+}
+.anim-pin > input:nth-child(4) {
+	scale: var(--slot-4, 1);
+}
