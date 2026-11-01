@@ -81,6 +81,11 @@ Themes live in `packages/tokens/src/themes.ts` (`pop` default, `arcade`, `gloss`
 - The sidebar (`docs-sidebar.tsx`) and table of contents (`docs-toc.tsx`) are our own components inside Fumadocs' layout.
 - Page icons come from frontmatter: `icon: HelloIcon` (zupy) or any Lucide name.
 - `/llms.txt`, `/llms-full.txt` and `/docs/<page>.md` are generated. Keep them working.
+- **It's a static site on GitHub Pages under `/zupy/`.** `.github/workflows/docs.yml` builds it with `BASE_PATH=/zupy/` and deploys on every push to `main` that touches `apps/www` or `packages`.
+  - Wrap raw URLs (images, `fetch`, plain `<a href>`) in `withBase()` from `@/lib/shared`. Router `<Link>`s get the base automatically.
+  - Server functions must use `staticLoaderMiddleware` (`@/lib/static-loader`) so their results are saved at build time. There's no server at runtime.
+  - Pages no link points to must be listed in `pages` in `vite.config.ts` to get prerendered.
+  - Test a production build locally with `BASE_PATH=/zupy/ bun run --cwd apps/www build`, then serve `.output/public` under `/zupy/`.
 
 ## Before you finish
 

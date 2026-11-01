@@ -45,6 +45,16 @@ Icons are plain SVG built by `createIcon`. They read `--zupy-icon-fill`, `--zupy
 - `src/lib/source.ts` resolves frontmatter `icon:` names to zupy icons first, then Lucide.
 - The site prerenders every page, plus `/llms.txt`, `/llms-full.txt` and a Markdown version of each page.
 
+### Static hosting
+
+The docs are plain files on GitHub Pages at `https://zupy-ui.github.io/zupy/`, with no server at runtime:
+
+- **Base path.** `BASE_PATH=/zupy/` sets Vite's `base` and the router `basepath`. Raw URLs go through `withBase()` in `src/lib/shared.ts`.
+- **Loader data.** The docs route's server function uses `staticLoaderMiddleware` (`src/lib/static-loader.ts`). During prerender it saves each result to `__tsr/staticServerFnCache/<hash>.json`, and in the browser it fetches that file instead of calling a server. It's adapted from `@tanstack/start-static-server-functions`, which doesn't support a base path.
+- **Search.** `/api/search` is prerendered as a static Orama index, and `components/search.tsx` searches it in the browser.
+- **OG images.** Nitro prerenders `/og/docs/**/image.webp`, because TanStack's prerender saves responses as text.
+- **Deploy.** `.github/workflows/docs.yml` builds with the base path and publishes `apps/www/.output/public` on pushes to `main` that touch the site or packages. `.github/workflows/ci.yml` runs lint, typecheck and build on every push and PR.
+
 ## Dev vs build
 
 Package `exports` point at `dist/`. In dev, `apps/www/vite.config.ts` aliases `@zupy/ui`, `@zupy/ui/styles.css` and `@zupy/icons` to their `src/` so edits hot-reload.
