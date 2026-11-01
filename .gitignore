@@ -1,0 +1,12 @@
+node_modules
+dist
+.turbo
+.output
+.tanstack
+.nitro
+.wrangler
+.source
+.DS_Store
+*.log
+.env*
+!.env.example
