@@ -10,12 +10,17 @@ import {
 	MarkdownCopyButton,
 	ViewOptionsPopover,
 } from "fumadocs-ui/layouts/docs/page";
+import {
+	TOCPopover,
+	TOCProvider,
+} from "fumadocs-ui/layouts/docs/page/slots/toc";
 import { Suspense, use } from "react";
 import {
 	NavTitle,
 	sidebarComponents,
 	ThemeSwitch,
 } from "@/components/docs-sidebar";
+import { DocsTOC } from "@/components/docs-toc";
 import { useMDXComponents } from "@/components/mdx";
 import { baseOptions } from "@/lib/layout.shared";
 import { getPageImageUrl, getPageMarkdownUrl, gitConfig } from "@/lib/shared";
@@ -60,7 +65,12 @@ function Content({ path, markdownUrl }: { path: string; markdownUrl: string }) {
 	const MDX = page.body;
 
 	return (
-		<DocsPage toc={toc}>
+		<DocsPage
+			toc={toc}
+			slots={{
+				toc: { provider: TOCProvider, main: DocsTOC, popover: TOCPopover },
+			}}
+		>
 			<DocsTitle>{page.title}</DocsTitle>
 			<DocsDescription>{page.description}</DocsDescription>
 			<div className="flex flex-row gap-2 items-center border-b -mt-4 pb-6">
