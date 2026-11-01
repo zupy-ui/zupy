@@ -6,6 +6,16 @@ Guide for coding agents working in this repo. Read it before making changes.
 
 zupy is a tactile React design system: chunky outlines, hard drop shadows, springy motion. Raised things sink into their shadow when pressed. React Native / Expo support is planned, so keep tokens platform-neutral.
 
+## Deeper docs
+
+| Doc | Read it when |
+| --- | --- |
+| [docs/architecture.md](docs/architecture.md) | You need to know how tokens, CSS, components and the docs site connect |
+| [docs/design-language.md](docs/design-language.md) | You're styling anything |
+| [docs/adding-a-component.md](docs/adding-a-component.md) | You're adding or changing a component |
+| [docs/icons.md](docs/icons.md) | You're drawing an icon |
+| [docs/theming.md](docs/theming.md) | You're adding a theme or token |
+
 ## Layout
 
 ```
