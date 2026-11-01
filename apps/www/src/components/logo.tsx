@@ -1,4 +1,5 @@
 import { cn } from "@zupy/ui";
+import { withBase } from "@/lib/shared";
 
 /** The zupy mark. `size` is its width and height in pixels; the parent link carries the label. */
 export function Logo({
@@ -10,7 +11,7 @@ export function Logo({
 }) {
 	return (
 		<img
-			src="/logo.webp"
+			src={withBase("/logo.webp")}
 			alt=""
 			width={size}
 			height={size}

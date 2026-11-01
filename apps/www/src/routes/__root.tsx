@@ -5,6 +5,8 @@ import {
 	Scripts,
 } from "@tanstack/react-router";
 import { RootProvider } from "fumadocs-ui/provider/tanstack";
+import { DocsSearchDialog } from "@/components/search";
+import { withBase } from "@/lib/shared";
 import appCss from "@/styles/app.css?url";
 
 const fonts =
@@ -21,12 +23,12 @@ export const Route = createRootRoute({
 				content:
 					"Chunky, tactile React components with hard shadows and springy motion.",
 			},
-			{ name: "theme-color", content: "#0055ff" },
+			{ name: "theme-color", content: "#005afd" },
 		],
 		links: [
-			{ rel: "icon", href: "/favicon.ico", sizes: "48x48" },
-			{ rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
-			{ rel: "manifest", href: "/site.webmanifest" },
+			{ rel: "icon", href: withBase("/favicon.ico"), sizes: "48x48" },
+			{ rel: "apple-touch-icon", href: withBase("/apple-touch-icon.png") },
+			{ rel: "manifest", href: withBase("/site.webmanifest") },
 			{ rel: "preconnect", href: "https://fonts.googleapis.com" },
 			{
 				rel: "preconnect",
@@ -47,7 +49,7 @@ function RootComponent() {
 				<HeadContent />
 			</head>
 			<body className="flex min-h-screen flex-col">
-				<RootProvider>
+				<RootProvider search={{ SearchDialog: DocsSearchDialog }}>
 					<Outlet />
 				</RootProvider>
 				<Scripts />

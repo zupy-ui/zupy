@@ -2,17 +2,18 @@
 	"name": "zupy",
 	"short_name": "zupy",
 	"description": "Tactile React components with chunky edges, hard shadows and springy motion.",
+	"start_url": "./",
 	"icons": [
-		{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
-		{ "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+		{ "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+		{ "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
 		{
-			"src": "/icon-512.png",
+			"src": "icon-512.png",
 			"sizes": "512x512",
 			"type": "image/png",
 			"purpose": "maskable"
 		}
 	],
-	"theme_color": "#0055ff",
+	"theme_color": "#005afd",
 	"background_color": "#fff8ec",
 	"display": "standalone"
 }

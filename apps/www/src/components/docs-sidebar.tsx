@@ -17,6 +17,7 @@ import {
 	useSyncExternalStore,
 } from "react";
 import { Logo } from "@/components/logo";
+import { withBase } from "@/lib/shared";
 
 const isActive = (url: string, pathname: string) =>
 	url.replace(/\/$/, "") === pathname.replace(/\/$/, "");
@@ -113,7 +114,7 @@ export const sidebarComponents: Partial<SidebarPageTreeComponents> = {
 export function NavTitle({ className, ...props }: ComponentProps<"a">) {
 	return (
 		<a
-			href="/"
+			href={withBase("/")}
 			aria-label="zupy home"
 			// Fumadocs passes its own sizing; ours goes last so the wordmark stays chunky.
 			className={cn(className, "inline-flex items-center")}

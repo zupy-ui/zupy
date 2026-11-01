@@ -3,7 +3,7 @@ import { themes } from "@zupy/tokens";
 import { Button } from "@zupy/ui";
 import { useState } from "react";
 import { Logo } from "@/components/logo";
-import { githubUrl } from "@/lib/shared";
+import { githubUrl, withBase } from "@/lib/shared";
 
 export const Route = createFileRoute("/")({
 	component: Home,
@@ -65,7 +65,7 @@ function Home() {
 						<Button
 							size="lg"
 							variant="secondary"
-							render={<a href="/llms.txt" />}
+							render={<a href={withBase("/llms.txt")} />}
 						>
 							llms.txt
 						</Button>

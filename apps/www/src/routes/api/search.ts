@@ -7,10 +7,11 @@ const server = createFromSource(source, {
 	language: "english",
 });
 
+// Exported once at build time as a static index; search runs in the browser.
 export const Route = createFileRoute("/api/search")({
 	server: {
 		handlers: {
-			GET: async ({ request }) => server.GET(request),
+			GET: () => server.staticGET(),
 		},
 	},
 });

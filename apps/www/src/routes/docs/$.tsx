@@ -28,8 +28,11 @@ import {
 	getPageMarkdownUrl,
 	gitConfig,
 	githubUrl,
+	siteUrl,
+	withBase,
 } from "@/lib/shared";
 import { docs, source } from "@/lib/source";
+import { staticLoaderMiddleware } from "@/lib/static-loader";
 
 export const Route = createFileRoute("/docs/$")({
 	component: Page,
@@ -41,23 +44,31 @@ export const Route = createFileRoute("/docs/$")({
 	},
 	head: ({ loaderData }) => ({
 		meta: loaderData
-			? [{ property: "og:image", content: loaderData.imageUrl }]
+			? [
+					{
+						property: "og:image",
+						content: `${siteUrl}${getPageImageUrl({ slugs: loaderData.slugs }).url}`,
+					},
+				]
 			: [],
 	}),
 });
 
+// The static middleware saves each result as JSON at build time, so client-side navigation
+// works on GitHub Pages without a server.
 const serverLoader = createServerFn({
 	method: "GET",
 })
 	.validator((slugs: string[]) => slugs)
+	.middleware([staticLoaderMiddleware])
 	.handler(async ({ data: slugs }) => {
 		const page = source.getPage(slugs);
 		if (!page) throw notFound();
 
 		return {
 			path: page.path,
-			markdownUrl: getPageMarkdownUrl(page).url,
-			imageUrl: getPageImageUrl(page).url,
+			slugs: page.slugs,
+			markdownUrl: withBase(getPageMarkdownUrl(page).url),
 			pageTree: await source.serializePageTree(source.getPageTree()),
 		};
 	});

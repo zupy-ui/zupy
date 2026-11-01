@@ -12,6 +12,20 @@ export const gitConfig = {
 
 export const githubUrl = `https://github.com/${gitConfig.user}/${gitConfig.repo}`;
 
+/** The published docs site (GitHub Pages). */
+export const siteUrl = "https://zupy-ui.github.io/zupy";
+
+/** Where the app is served from: "/" locally, "/zupy/" on GitHub Pages. Always ends with "/". */
+export const basePath = import.meta.env.BASE_URL;
+
+/**
+ * Prefixes a root-relative path with the base path. Use it for raw URLs (images, fetches, plain
+ * `<a>` tags); router `<Link>`s already get the base path.
+ */
+export function withBase(path: string) {
+	return `${basePath}${path.replace(/^\//, "")}`;
+}
+
 const getDocsUrl = createGetUrl(docsRoute);
 
 export function getPageMarkdownUrl(page: { slugs: string[]; locale?: string }) {
