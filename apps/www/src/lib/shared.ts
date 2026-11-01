@@ -5,10 +5,12 @@ export const docsRoute = "/docs";
 export const docsImageRoute = "/og/docs";
 
 export const gitConfig = {
-	user: "mxvsh",
+	user: "zupy-ui",
 	repo: "zupy",
 	branch: "main",
 };
+
+export const githubUrl = `https://github.com/${gitConfig.user}/${gitConfig.repo}`;
 
 const getDocsUrl = createGetUrl(docsRoute);
 

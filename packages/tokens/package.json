@@ -3,6 +3,11 @@
 	"version": "0.0.0",
 	"description": "Design tokens for zupy: colors, shape and motion for web and React Native.",
 	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/zupy-ui/zupy.git",
+		"directory": "packages/tokens"
+	},
 	"type": "module",
 	"sideEffects": [
 		"**/*.css"

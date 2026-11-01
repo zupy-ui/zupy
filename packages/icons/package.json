@@ -3,6 +3,11 @@
 	"version": "0.0.0",
 	"description": "Tactile SVG icons for zupy: chunky outlines, solid fills and a hard drop shadow.",
 	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/zupy-ui/zupy.git",
+		"directory": "packages/icons"
+	},
 	"type": "module",
 	"sideEffects": false,
 	"files": [

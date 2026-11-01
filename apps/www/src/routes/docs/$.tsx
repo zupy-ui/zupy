@@ -23,7 +23,12 @@ import {
 import { DocsTOC } from "@/components/docs-toc";
 import { useMDXComponents } from "@/components/mdx";
 import { baseOptions } from "@/lib/layout.shared";
-import { getPageImageUrl, getPageMarkdownUrl, gitConfig } from "@/lib/shared";
+import {
+	getPageImageUrl,
+	getPageMarkdownUrl,
+	gitConfig,
+	githubUrl,
+} from "@/lib/shared";
 import { docs, source } from "@/lib/source";
 
 export const Route = createFileRoute("/docs/$")({
@@ -77,7 +82,7 @@ function Content({ path, markdownUrl }: { path: string; markdownUrl: string }) {
 				<MarkdownCopyButton markdownUrl={markdownUrl} />
 				<ViewOptionsPopover
 					markdownUrl={markdownUrl}
-					githubUrl={`https://github.com/${gitConfig.user}/${gitConfig.repo}/blob/${gitConfig.branch}/content/docs/${path}`}
+					githubUrl={`${githubUrl}/blob/${gitConfig.branch}/apps/www/content/docs/${path}`}
 				/>
 			</div>
 			<DocsBody>

@@ -3,6 +3,7 @@ import { themes } from "@zupy/tokens";
 import { Button } from "@zupy/ui";
 import { useState } from "react";
 import { Logo } from "@/components/logo";
+import { githubUrl } from "@/lib/shared";
 
 export const Route = createFileRoute("/")({
 	component: Home,
@@ -36,11 +37,7 @@ function Home() {
 					>
 						Docs
 					</Button>
-					<Button
-						variant="secondary"
-						size="sm"
-						render={<a href="https://github.com/mxvsh/zupy" />}
-					>
+					<Button variant="secondary" size="sm" render={<a href={githubUrl} />}>
 						GitHub
 					</Button>
 				</nav>
