@@ -1,6 +1,6 @@
 ---
 title: Icons
-description: Tactile SVG icons with chunky outlines, accent fills and a hard drop shadow.
+description: Tactile SVG icons with chunky outlines, solid fills and a hard drop shadow.
 icon: StarIcon
 ---
 
@@ -24,7 +24,7 @@ The icons work with or without `@zupy/ui`. Without zupy's styles they use the de
 
 ## Tones
 
-`tone` picks the fill from the theme. Without it, icons use the accent color.
+`tone` picks the fill from the theme. Without it, icons use the primary color.
 
 <Preview>
   <HeartIcon size={40} />
@@ -57,8 +57,8 @@ Each icon uses three CSS variables, so a parent can restyle every icon inside it
 
 | Variable              | Default                  | Paints                                 |
 | --------------------- | ------------------------ | -------------------------------------- |
-| `--zupy-icon-fill`    | `--zupy-accent`          | The main shape                         |
-| `--zupy-icon-ink`     | `--zupy-accent-foreground` | Details drawn on the shape            |
+| `--zupy-icon-fill`    | `--zupy-primary`         | The main shape                         |
+| `--zupy-icon-ink`     | `--zupy-primary-foreground` | Details drawn on the shape          |
 | `--zupy-icon-outline` | `--zupy-foreground`      | The outline and strokes outside it     |
 
 The hard shadow uses `--zupy-edge`, like every raised element.
