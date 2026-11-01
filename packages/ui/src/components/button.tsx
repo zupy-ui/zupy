@@ -47,12 +47,22 @@ export interface ButtonProps
  * @example
  * <Button>Play now</Button>
  * <Button variant="accent" size="lg">Join lobby</Button>
- * <Button variant="ghost" render={<a href="/rules" />}>Rules</Button>
+ * <Button variant="ghost" render={<a href="/docs" />}>Docs</Button>
  */
-export function Button({ className, variant, size, ...props }: ButtonProps) {
+export function Button({
+	className,
+	variant,
+	size,
+	render,
+	// A custom `render` (link, router Link) is usually not a <button>.
+	nativeButton = render === undefined,
+	...props
+}: ButtonProps) {
 	return (
 		<BaseButton
 			className={cn(buttonVariants({ variant, size }), className)}
+			render={render}
+			nativeButton={nativeButton}
 			{...props}
 		/>
 	);
