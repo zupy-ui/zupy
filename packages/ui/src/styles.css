@@ -15,13 +15,20 @@
  * The tactile look. Every raised element has an outline in the edge color and a hard drop shadow
  * of `--zupy-lift`. With `--zupy-gloss: 1` it also gets a highlight on top and a shade at the bottom.
  * These read --zupy-* directly (not via a shared var) so nested themes resolve per element.
+ * `--z-lift` / `--z-press` are per-element overrides; `depth-sm` sets them for compact controls.
  */
 @utility raised {
 	border: var(--zupy-edge-width) solid var(--zupy-edge);
 	box-shadow:
 		inset 0 1.5px 0 rgb(255 255 255 / calc(var(--zupy-gloss) * 0.3)),
 		inset 0 -2px 0 rgb(0 0 0 / calc(var(--zupy-gloss) * 0.18)),
-		0 var(--zupy-lift) 0 var(--zupy-edge);
+		0 var(--z-lift, var(--zupy-lift)) 0 var(--zupy-edge);
+}
+
+/* Smaller lift for compact controls. Use on leaf elements only: the override inherits. */
+@utility depth-sm {
+	--z-lift: var(--zupy-lift-sm);
+	--z-press: var(--zupy-press-sm);
 }
 
 /* Solid fill from `--zupy-fill`, turned into a soft diagonal gradient when the theme is glossy. */
@@ -48,10 +55,12 @@
 
 	&:active:not(:disabled, [data-disabled]),
 	&[data-pressed] {
-		transform: translateY(var(--zupy-press));
+		transform: translateY(var(--z-press, var(--zupy-press)));
 		box-shadow:
 			inset 0 1.5px 0 rgb(255 255 255 / calc(var(--zupy-gloss) * 0.22)),
-			0 calc(var(--zupy-lift) - var(--zupy-press)) 0 var(--zupy-edge);
+			0
+			calc(var(--z-lift, var(--zupy-lift)) - var(--z-press, var(--zupy-press)))
+			0 var(--zupy-edge);
 	}
 }
 

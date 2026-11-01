@@ -1,13 +1,14 @@
 import { Button as BaseButton } from "@base-ui/react/button";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/cn";
+import { disabledStyle, focusRing } from "@/lib/styles";
 
 export const buttonVariants = cva(
 	[
 		"inline-flex shrink-0 cursor-pointer select-none items-center justify-center gap-2 whitespace-nowrap",
-		"font-display font-semibold tracking-tight outline-none",
-		"focus-visible:ring-3 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-		"data-disabled:cursor-not-allowed data-disabled:opacity-50",
+		"font-display font-semibold tracking-tight",
+		focusRing,
+		disabledStyle,
 		"[&_svg]:pointer-events-none [&_svg]:shrink-0",
 	],
 	{
