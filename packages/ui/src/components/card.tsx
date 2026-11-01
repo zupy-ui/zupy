@@ -31,8 +31,8 @@ export interface CardProps
  *
  * @example
  * <Card>
- *   <Heading level={3}>Daily puzzle</Heading>
- *   <Text tone="muted">Six tries to guess the word.</Text>
+ *   <Heading level={3}>Weekly goal</Heading>
+ *   <Text tone="muted">Three of five days done.</Text>
  * </Card>
  */
 export function Card({

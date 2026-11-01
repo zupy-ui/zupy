@@ -10,10 +10,10 @@ export interface FieldProps extends Omit<BaseField.Root.Props, "className"> {
  *
  * @example
  * <Field>
- *   <FieldLabel>Nickname</FieldLabel>
+ *   <FieldLabel>Display name</FieldLabel>
  *   <Input required />
- *   <FieldDescription>Shown on the leaderboard.</FieldDescription>
- *   <FieldError>Pick a nickname first.</FieldError>
+ *   <FieldDescription>Shown on your profile.</FieldDescription>
+ *   <FieldError>Pick a name first.</FieldError>
  * </Field>
  */
 export function Field({ className, ...props }: FieldProps) {

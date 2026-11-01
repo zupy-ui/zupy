@@ -47,7 +47,7 @@ export interface ButtonProps
  *
  * @example
  * <Button>Play now</Button>
- * <Button variant="accent" size="lg">Join lobby</Button>
+ * <Button variant="accent" size="lg">Continue</Button>
  * <Button variant="ghost" render={<a href="/docs" />}>Docs</Button>
  */
 export function Button({

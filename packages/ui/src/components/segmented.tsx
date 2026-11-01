@@ -16,7 +16,7 @@ export interface SegmentedProps
 }
 
 /**
- * Pick one of a few options, like a game mode or a tab. One item is always selected.
+ * Pick one of a few options, like a view mode or a filter. One item is always selected.
  *
  * @example
  * <Segmented defaultValue="daily">

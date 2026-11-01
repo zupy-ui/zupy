@@ -40,7 +40,7 @@ export interface TileProps
 }
 
 /**
- * A chunky square for letters, numbers or emoji: word games, scores, dice.
+ * A chunky square for a single letter, number or emoji.
  *
  * @example
  * <Tile variant="success">Z</Tile>

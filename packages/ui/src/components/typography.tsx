@@ -37,7 +37,7 @@ export interface HeadingProps
  * A rounded, heavy heading. `level` sets the semantic tag; `size` overrides the look.
  *
  * @example
- * <Heading level={1}>Ready, player?</Heading>
+ * <Heading level={1}>Welcome back</Heading>
  * <Heading level={2} size="display">Big poster title</Heading>
  */
 export function Heading({

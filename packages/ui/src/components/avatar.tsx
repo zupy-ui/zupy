@@ -47,7 +47,7 @@ function initials(name: string) {
 }
 
 /**
- * A round picture of a player, with initials when there is no image.
+ * A picture of a person, with their initials when there is no image.
  *
  * @example
  * <Avatar name="Maya Lin" src="/maya.png" />
