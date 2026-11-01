@@ -1,0 +1,7 @@
+{
+	"extends": "@zupy/config/tsconfig.react.json",
+	"compilerOptions": {
+		"paths": { "@/*": ["./src/*"] }
+	},
+	"include": ["src"]
+}

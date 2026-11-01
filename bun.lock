@@ -45,6 +45,16 @@
       "name": "@zupy/config",
       "version": "0.0.0",
     },
+    "packages/icons": {
+      "name": "@zupy/icons",
+      "version": "0.0.0",
+      "devDependencies": {
+        "@types/react": "^19.3.0",
+        "@zupy/config": "workspace:*",
+        "react": "^19.3.1",
+        "tsdown": "^0.23.4",
+      },
+    },
     "packages/tokens": {
       "name": "@zupy/tokens",
       "version": "0.0.0",
@@ -480,6 +490,8 @@
     "@yuku-toolchain/types": ["@yuku-toolchain/types@0.19.0", "", {}, "sha512-tFkNbsP4WXX9UMUC5syJGdK9dPMLK0PPaIuXCcCYH75sZ8MrebfBZ2XvCILRTw8AgLivSSCfDa4R67iYBDa4Kg=="],
 
     "@zupy/config": ["@zupy/config@workspace:packages/config"],
+
+    "@zupy/icons": ["@zupy/icons@workspace:packages/icons"],
 
     "@zupy/tokens": ["@zupy/tokens@workspace:packages/tokens"],
 
