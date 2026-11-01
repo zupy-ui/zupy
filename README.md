@@ -39,3 +39,7 @@ bun run dev
 ```
 
 The docs run at http://localhost:3000.
+
+## License
+
+[MIT](LICENSE)

@@ -1,7 +1,8 @@
 {
 	"name": "@zupy/icons",
 	"version": "0.0.0",
-	"description": "Tactile SVG icons for zupy: chunky outlines, accent fills and a hard drop shadow.",
+	"description": "Tactile SVG icons for zupy: chunky outlines, solid fills and a hard drop shadow.",
+	"license": "MIT",
 	"type": "module",
 	"sideEffects": false,
 	"files": [

@@ -2,6 +2,7 @@
 	"name": "@zupy/tokens",
 	"version": "0.0.0",
 	"description": "Design tokens for zupy: colors, shape and motion for web and React Native.",
+	"license": "MIT",
 	"type": "module",
 	"sideEffects": [
 		"**/*.css"
