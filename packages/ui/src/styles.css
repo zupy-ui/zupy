@@ -1,0 +1,113 @@
+/*
+ * zupy styles. In your app's CSS:
+ *   @import "tailwindcss";
+ *   @import "@zupy/ui/styles.css";
+ */
+@import "@zupy/tokens/tokens.css";
+@import "@zupy/tokens/theme.css";
+
+/* Let Tailwind see the classes used inside zupy components. */
+@source ".";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * The tactile look. Every raised element has an outline in the edge color and a hard drop shadow
+ * of `--zupy-lift`. With `--zupy-gloss: 1` it also gets a highlight on top and a shade at the bottom.
+ * These read --zupy-* directly (not via a shared var) so nested themes resolve per element.
+ */
+@utility raised {
+	border: var(--zupy-edge-width) solid var(--zupy-edge);
+	box-shadow:
+		inset 0 1.5px 0 rgb(255 255 255 / calc(var(--zupy-gloss) * 0.3)),
+		inset 0 -2px 0 rgb(0 0 0 / calc(var(--zupy-gloss) * 0.18)),
+		0 var(--zupy-lift) 0 var(--zupy-edge);
+}
+
+/* Solid fill from `--zupy-fill`, turned into a soft diagonal gradient when the theme is glossy. */
+@utility filled {
+	background-color: var(--zupy-fill);
+	background-image: linear-gradient(
+		155deg,
+		color-mix(in oklab, var(--zupy-fill), white calc(var(--zupy-gloss) * 22%)),
+		color-mix(in oklab, var(--zupy-fill), black calc(var(--zupy-gloss) * 10%))
+	);
+}
+
+/* Sinks into its own shadow when pressed. Pair with `raised`. */
+@utility pressable {
+	transition-property: transform, box-shadow, filter;
+	transition-duration: var(--zupy-duration-press);
+	transition-timing-function: ease;
+
+	@media (hover: hover) {
+		&:hover:not(:disabled, [data-disabled]) {
+			filter: brightness(1.05);
+		}
+	}
+
+	&:active:not(:disabled, [data-disabled]),
+	&[data-pressed] {
+		transform: translateY(var(--zupy-press));
+		box-shadow:
+			inset 0 1.5px 0 rgb(255 255 255 / calc(var(--zupy-gloss) * 0.22)),
+			0 calc(var(--zupy-lift) - var(--zupy-press)) 0 var(--zupy-edge);
+	}
+}
+
+@keyframes zupy-pop {
+	0% {
+		transform: scale(0.6);
+		opacity: 0;
+	}
+	60% {
+		transform: scale(1.12);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes zupy-shake {
+	10%,
+	90% {
+		transform: translateX(-2px);
+	}
+	20%,
+	80% {
+		transform: translateX(4px);
+	}
+	30%,
+	50%,
+	70% {
+		transform: translateX(-8px);
+	}
+	40%,
+	60% {
+		transform: translateX(8px);
+	}
+}
+
+@theme inline {
+	--animate-pop: zupy-pop 260ms var(--zupy-ease-pop) both;
+	--animate-shake: zupy-shake 500ms ease-in-out;
+}
+
+@layer base {
+	body {
+		background-color: var(--zupy-background);
+		color: var(--zupy-foreground);
+		font-family: var(--zupy-font-sans);
+	}
+}
+
+/* Unlayered, so it beats the utilities layer without !important. */
+@media (prefers-reduced-motion: reduce) {
+	.pressable,
+	.animate-pop,
+	.animate-shake {
+		transition-duration: 1ms;
+		animation-duration: 1ms;
+	}
+}
