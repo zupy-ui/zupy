@@ -122,7 +122,7 @@ export const gloss: Theme = {
 		background: "#121317",
 		foreground: "#f5f5f7",
 		muted: "#8d90a0",
-		surface: "#1b1d22",
+		surface: "#25272e",
 		card: "#1b1d22",
 		border: "#2c2e36",
 		edge: "#000000",
