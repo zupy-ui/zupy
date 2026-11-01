@@ -1,0 +1,46 @@
+---
+title: Introduction
+description: Playful, tactile React components. Chunky edges, hard shadows, springy motion.
+icon: Sparkles
+---
+
+zupy is a small design system for playful apps: games, quizzes, kids' apps, anything that should feel fun to tap. Every raised element has an outline, a hard drop shadow, and sinks into that shadow when you press it.
+
+<Preview>
+  <Button>Play now</Button>
+  <Button variant="accent">Join lobby</Button>
+  <Button variant="secondary">Settings</Button>
+</Preview>
+
+## Installation
+
+```bash
+bun add @zupy/ui
+```
+
+Then import the styles after Tailwind in your app's CSS:
+
+```css
+@import "tailwindcss";
+@import "@zupy/ui/styles.css";
+```
+
+zupy expects the **Fredoka** (headings) and **Inter** (body) fonts. Load them however your app loads fonts, or override `--zupy-font-display` and `--zupy-font-sans`.
+
+## Themes
+
+Three themes ship with zupy. Set `data-theme` on any element, and add the `dark` class for dark mode:
+
+```html
+<html data-theme="arcade" class="dark">
+```
+
+| Theme    | Feel                                  |
+| -------- | ------------------------------------- |
+| `pop`    | Default. Cream paper, ink edges.      |
+| `arcade` | Navy outlines, blue and yellow.       |
+| `gloss`  | Borderless glossy tiles, green/yellow. |
+
+## Using zupy with AI
+
+Every docs page is available as Markdown by adding `.md` to its URL, and the whole site is indexed at [`/llms.txt`](/llms.txt) and [`/llms-full.txt`](/llms-full.txt). Point your coding agent there.

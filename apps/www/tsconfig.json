@@ -1,0 +1,13 @@
+{
+	"extends": "@zupy/config/tsconfig.react.json",
+	"compilerOptions": {
+		"types": ["vite/client"],
+		"allowJs": true,
+		"noUncheckedIndexedAccess": false,
+		"paths": {
+			"@/*": ["./src/*"]
+		}
+	},
+	"include": ["**/*.ts", "**/*.tsx"],
+	"exclude": ["node_modules", ".output", ".nitro", ".tanstack"]
+}

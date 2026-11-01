@@ -1,0 +1,52 @@
+---
+title: Button
+description: A chunky button that sinks into its shadow when pressed.
+---
+
+<Preview>
+  <Button>Primary</Button>
+  <Button variant="accent">Accent</Button>
+  <Button variant="secondary">Secondary</Button>
+  <Button variant="danger">Danger</Button>
+  <Button variant="ghost">Ghost</Button>
+</Preview>
+
+```tsx
+import { Button } from "@zupy/ui";
+
+<Button>Play now</Button>;
+```
+
+## Sizes
+
+<Preview>
+  <Button size="sm">Small</Button>
+  <Button size="md">Medium</Button>
+  <Button size="lg">Large</Button>
+</Preview>
+
+```tsx
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+```
+
+## As a link
+
+Use `render` to keep the button styles on another element, such as a router link.
+
+```tsx
+<Button render={<a href="/docs" />}>Read the docs</Button>
+```
+
+## Props
+
+| Prop        | Type                                                           | Default     |
+| ----------- | -------------------------------------------------------------- | ----------- |
+| `variant`   | `"primary" \| "accent" \| "secondary" \| "danger" \| "ghost"` | `"primary"` |
+| `size`      | `"sm" \| "md" \| "lg"`                                         | `"md"`      |
+| `render`    | `ReactElement`                                                 |             |
+| `disabled`  | `boolean`                                                      | `false`     |
+| `className` | `string`                                                       |             |
+
+All other props are passed to the underlying [Base UI Button](https://base-ui.com/react/components/button).

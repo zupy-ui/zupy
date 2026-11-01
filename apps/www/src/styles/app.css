@@ -1,0 +1,37 @@
+@import "tailwindcss";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
+@import "@zupy/ui/styles.css";
+
+@source "../../content";
+
+/* The docs chrome is Fumadocs UI for now, painted with zupy tokens. */
+:root,
+.dark {
+	--color-fd-background: var(--zupy-background);
+	--color-fd-foreground: var(--zupy-foreground);
+	--color-fd-muted: var(--zupy-surface);
+	--color-fd-muted-foreground: var(--zupy-muted);
+	--color-fd-popover: var(--zupy-card);
+	--color-fd-popover-foreground: var(--zupy-foreground);
+	--color-fd-card: var(--zupy-card);
+	--color-fd-card-foreground: var(--zupy-foreground);
+	--color-fd-border: var(--zupy-border);
+	--color-fd-primary: var(--zupy-primary);
+	--color-fd-primary-foreground: var(--zupy-primary-foreground);
+	--color-fd-secondary: var(--zupy-surface);
+	--color-fd-secondary-foreground: var(--zupy-foreground);
+	--color-fd-accent: var(--zupy-surface);
+	--color-fd-accent-foreground: var(--zupy-foreground);
+	--color-fd-ring: var(--zupy-ring);
+}
+
+html {
+	scrollbar-gutter: stable;
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--zupy-font-display);
+}
