@@ -17,6 +17,7 @@ export {
 	type FieldLabelProps,
 	type FieldProps,
 } from "@/components/field";
+export { Form, type FormProps } from "@/components/form";
 export { IconButton, type IconButtonProps } from "@/components/icon-button";
 export {
 	Input,
