@@ -2,8 +2,8 @@ import type { ReactNode, SVGProps } from "react";
 
 // Fallbacks match the default `pop` theme, so icons also look right without zupy's CSS.
 const OUTLINE = "var(--zupy-icon-outline, var(--zupy-foreground, #1b1530))";
-const FILL = "var(--zupy-icon-fill, var(--zupy-accent, #ffd400))";
-const INK = "var(--zupy-icon-ink, var(--zupy-accent-foreground, #1b1530))";
+const FILL = "var(--zupy-icon-fill, var(--zupy-primary, #005afd))";
+const INK = "var(--zupy-icon-ink, var(--zupy-primary-foreground, #ffffff))";
 const EDGE = "var(--zupy-edge, #1b1530)";
 
 const tones = {
@@ -20,7 +20,7 @@ export type IconTone = keyof typeof tones;
 export interface IconProps extends Omit<SVGProps<SVGSVGElement>, "children"> {
 	/** Width and height. @default "1em" */
 	size?: number | string;
-	/** Fill color from the theme. Without it the icon uses the accent, or whatever a parent sets. */
+	/** Fill color from the theme. Without it the icon uses the primary, or whatever a parent sets. */
 	tone?: IconTone;
 	/** Accessible name. Without it the icon is decorative and hidden from screen readers. */
 	title?: string;
@@ -36,7 +36,7 @@ export interface IconShape {
 }
 
 /**
- * Builds a zupy icon from a 24×24 shape. The body gets an accent fill, a 2px outline and a hard
+ * Builds a zupy icon from a 24×24 shape. The body gets a primary fill, a 2px outline and a hard
  * drop shadow; `outside` and `details` are drawn on top.
  *
  * Colors come from CSS variables, so a parent can restyle every icon inside it:
