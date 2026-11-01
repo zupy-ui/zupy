@@ -13,6 +13,7 @@ import {
 	IconButton,
 	Input,
 	Kbd,
+	PinInput,
 	Radio,
 	RadioGroup,
 	Segmented,
@@ -20,7 +21,6 @@ import {
 	Switch,
 	Text,
 	Textarea,
-	Tile,
 	Card as ZupyCard,
 } from "@zupy/ui";
 import defaultMdxComponents from "fumadocs-ui/mdx";
@@ -49,6 +49,7 @@ export function getMDXComponents(components?: MDXComponents) {
 		IconButton,
 		Input,
 		Kbd,
+		PinInput,
 		Radio,
 		RadioGroup,
 		Segmented,
@@ -56,7 +57,6 @@ export function getMDXComponents(components?: MDXComponents) {
 		Switch,
 		Text,
 		Textarea,
-		Tile,
 		...components,
 	} satisfies MDXComponents;
 }

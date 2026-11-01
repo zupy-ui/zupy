@@ -1,0 +1,94 @@
+---
+title: Pin Input
+description: Chunky slots for one-time codes and PINs, with auto-advance and paste.
+---
+
+<Preview>
+  <PinInput length={6} groupSize={3} aria-label="Verification code" />
+</Preview>
+
+```tsx
+import { PinInput } from "@zupy/ui";
+
+<PinInput
+  length={6}
+  groupSize={3}
+  aria-label="Verification code"
+  onValueComplete={(code) => verify(code)}
+/>
+```
+
+## Behavior
+
+- Typing a character moves to the next slot; Backspace clears and moves back.
+- Arrow keys, Home and End move between slots.
+- Pasting a code, or picking one from the phone's SMS suggestion, fills every slot at once.
+- When every slot is filled, the slots turn primary and `onValueComplete` fires.
+- Characters that don't match `validationType` are rejected.
+
+## PIN
+
+Use `mask` to hide the characters, and a shorter `length`.
+
+<Preview>
+  <PinInput length={4} mask aria-label="PIN" />
+</Preview>
+
+```tsx
+<PinInput length={4} mask aria-label="PIN" />
+```
+
+## Letters and numbers
+
+<Preview>
+  <PinInput length={5} validationType="alphanumeric" placeholder="•" aria-label="Invite code" />
+</Preview>
+
+```tsx
+<PinInput length={5} validationType="alphanumeric" placeholder="•" />
+```
+
+## Sizes
+
+<Preview>
+  <div className="flex flex-col items-center gap-4">
+    <PinInput length={4} size="sm" aria-label="Small" />
+    <PinInput length={4} size="md" aria-label="Medium" />
+    <PinInput length={4} size="lg" aria-label="Large" />
+  </div>
+</Preview>
+
+## In a form
+
+Inside a [Field](/docs/components/field), the label and errors are wired up automatically, and `name` submits the code with the form.
+
+```tsx
+<Form onFormSubmit={(values) => verify(values.code)}>
+  <Field name="code">
+    <FieldLabel>Verification code</FieldLabel>
+    <PinInput length={6} required />
+    <FieldError match="valueMissing">Enter the code we sent you.</FieldError>
+  </Field>
+  <Button type="submit">Verify</Button>
+</Form>
+```
+
+## Props
+
+| Prop              | Type                                                    | Default     |
+| ----------------- | ------------------------------------------------------- | ----------- |
+| `length`          | `number`                                                | `6`         |
+| `groupSize`       | `number`                                                |             |
+| `size`            | `"sm" \| "md" \| "lg"`                                  | `"md"`      |
+| `value`           | `string`                                                |             |
+| `defaultValue`    | `string`                                                |             |
+| `onValueChange`   | `(value: string) => void`                               |             |
+| `onValueComplete` | `(value: string) => void`                               |             |
+| `validationType`  | `"numeric" \| "alpha" \| "alphanumeric" \| "none"`      | `"numeric"` |
+| `mask`            | `boolean`                                               | `false`     |
+| `placeholder`     | `string`                                                |             |
+| `autoSubmit`      | `boolean` (submits the form when complete)              | `false`     |
+| `disabled`        | `boolean`                                               | `false`     |
+| `name`            | `string`                                                |             |
+
+Built on [Base UI OTP Field](https://base-ui.com/react/components/otp-field).
