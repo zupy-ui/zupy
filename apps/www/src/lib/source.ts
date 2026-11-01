@@ -1,9 +1,14 @@
+import { type IconName, icons } from "@zupy/icons";
 import { llms, loader } from "fumadocs-core/source";
 import { defineDocs } from "fumadocs-mdx/macro";
 import { icons as lucide } from "lucide-react";
-import { createElement } from "react";
-import { pageIcons } from "@/components/page-icons";
+import { type ComponentType, createElement } from "react";
 import { docsRoute } from "@/lib/shared";
+
+/** `icon: HelloIcon` in frontmatter picks a zupy icon; any other name falls back to Lucide. */
+function resolveIcon(name: string): ComponentType | undefined {
+	return icons[name as IconName] ?? lucide[name as keyof typeof lucide];
+}
 
 export const docs = defineDocs({
 	dir: "content/docs",
@@ -18,10 +23,8 @@ export const docs = defineDocs({
 export const source = loader({
 	source: docs.toFumadocsSource(),
 	baseUrl: docsRoute,
-	// Frontmatter `icon:` resolves to our own zupy icons first, then Lucide.
 	icon(name) {
-		if (!name) return;
-		const Icon = pageIcons[name] ?? lucide[name as keyof typeof lucide];
+		const Icon = name ? resolveIcon(name) : undefined;
 		return Icon ? createElement(Icon) : undefined;
 	},
 });

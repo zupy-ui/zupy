@@ -13,6 +13,7 @@
 		"@tanstack/react-router": "1.170.45",
 		"@tanstack/react-router-devtools": "1.167.2",
 		"@tanstack/react-start": "1.169.3",
+		"@zupy/icons": "workspace:*",
 		"@zupy/tokens": "workspace:*",
 		"@zupy/ui": "workspace:*",
 		"fumadocs-core": "16.17.9",

@@ -1,3 +1,4 @@
+import { icons } from "@zupy/icons";
 import {
 	Avatar,
 	Badge,
@@ -23,14 +24,16 @@ import {
 	Card as ZupyCard,
 } from "@zupy/ui";
 import defaultMdxComponents from "fumadocs-ui/mdx";
-import { Heart, Plus, Settings } from "lucide-react";
 import type { MDXComponents } from "mdx/types";
+import { IconGallery } from "@/components/icon-gallery";
 import { Preview } from "@/components/preview";
 
 export function getMDXComponents(components?: MDXComponents) {
 	return {
 		...defaultMdxComponents,
+		...icons,
 		Preview,
+		IconGallery,
 		Avatar,
 		Badge,
 		Button,
@@ -54,9 +57,6 @@ export function getMDXComponents(components?: MDXComponents) {
 		Text,
 		Textarea,
 		Tile,
-		Heart,
-		Plus,
-		Settings,
 		...components,
 	} satisfies MDXComponents;
 }

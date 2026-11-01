@@ -6,8 +6,8 @@ import { fumadocsMdx } from "fumadocs-mdx/vite";
 import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 
-const ui = (path: string) =>
-	fileURLToPath(new URL(`../../packages/ui/src/${path}`, import.meta.url));
+const pkg = (path: string) =>
+	fileURLToPath(new URL(`../../packages/${path}`, import.meta.url));
 
 export default defineConfig({
 	server: {
@@ -26,10 +26,14 @@ export default defineConfig({
 	],
 	resolve: {
 		tsconfigPaths: true,
-		// Point at @zupy/ui source so library edits hot-reload without a rebuild.
+		// Point at library source so edits hot-reload without a rebuild.
 		alias: [
-			{ find: /^@zupy\/ui$/, replacement: ui("index.ts") },
-			{ find: /^@zupy\/ui\/styles\.css$/, replacement: ui("styles.css") },
+			{ find: /^@zupy\/ui$/, replacement: pkg("ui/src/index.ts") },
+			{
+				find: /^@zupy\/ui\/styles\.css$/,
+				replacement: pkg("ui/src/styles.css"),
+			},
+			{ find: /^@zupy\/icons$/, replacement: pkg("icons/src/index.ts") },
 			{ find: "tslib", replacement: "tslib/tslib.es6.js" },
 		],
 	},

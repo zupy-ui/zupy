@@ -1,0 +1,95 @@
+---
+title: Icons
+description: Tactile SVG icons with chunky outlines, accent fills and a hard drop shadow.
+icon: StarIcon
+---
+
+`@zupy/icons` draws icons the way zupy draws buttons: a thick rounded outline, a solid fill and a hard shadow underneath, so they look like tiny raised tiles.
+
+<IconGallery />
+
+## Installation
+
+```bash
+bun add @zupy/icons
+```
+
+```tsx
+import { HeartIcon } from "@zupy/icons";
+
+<HeartIcon size={24} />
+```
+
+The icons work with or without `@zupy/ui`. Without zupy's styles they use the default `pop` colors.
+
+## Tones
+
+`tone` picks the fill from the theme. Without it, icons use the accent color.
+
+<Preview>
+  <HeartIcon size={40} />
+  <HeartIcon size={40} tone="primary" />
+  <HeartIcon size={40} tone="success" />
+  <HeartIcon size={40} tone="warning" />
+  <HeartIcon size={40} tone="danger" />
+  <HeartIcon size={40} tone="neutral" />
+</Preview>
+
+```tsx
+<HeartIcon tone="danger" />
+```
+
+## Size and accessibility
+
+`size` sets the width and height. It defaults to `1em`, so icons match the surrounding text.
+
+Icons are hidden from screen readers by default. Pass `title` when the icon carries meaning on its own:
+
+```tsx
+<StarIcon title="Favorite" />
+```
+
+Inside a [Button](/docs/components/button) or [Icon Button](/docs/components/icon-button) the label already describes the action, so leave `title` off.
+
+## Colors
+
+Each icon uses three CSS variables, so a parent can restyle every icon inside it:
+
+| Variable              | Default                  | Paints                                 |
+| --------------------- | ------------------------ | -------------------------------------- |
+| `--zupy-icon-fill`    | `--zupy-accent`          | The main shape                         |
+| `--zupy-icon-ink`     | `--zupy-accent-foreground` | Details drawn on the shape            |
+| `--zupy-icon-outline` | `--zupy-foreground`      | The outline and strokes outside it     |
+
+The hard shadow uses `--zupy-edge`, like every raised element.
+
+```tsx
+<nav className="[--zupy-icon-fill:var(--zupy-primary)] [--zupy-icon-ink:white]">
+  <HomeIcon />
+  <SearchIcon />
+</nav>
+```
+
+## Make your own
+
+`createIcon` turns a 24×24 shape into an icon with the same look:
+
+- `body`: path data for the main shape. It gets the fill, outline and shadow.
+- `outside`: strokes beyond the shape, like handles or antennas.
+- `details`: marks drawn on the shape, like eyes or lines. Use `dot` for filled dots.
+
+```tsx
+import { createIcon, dot } from "@zupy/icons";
+
+export const CloudIcon = createIcon("CloudIcon", {
+  body: "M7 18a4 4 0 0 1-.5-8 6 6 0 0 1 11.5 1.5A3.5 3.5 0 0 1 17.5 18z",
+  details: (
+    <>
+      <circle cx="10" cy="13" r="1.1" {...dot} />
+      <circle cx="14" cy="13" r="1.1" {...dot} />
+    </>
+  ),
+});
+```
+
+Keep the body inside about 3–21 on each axis, leaving room at the bottom for the shadow.
