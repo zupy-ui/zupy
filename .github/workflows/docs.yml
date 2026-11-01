@@ -1,7 +1,8 @@
 name: Docs
 
-# Builds the docs site as static files and publishes it to GitHub Pages
-# (https://zupy-ui.github.io/zupy/) whenever the site or any package it renders changes.
+# Builds the docs site as static files and publishes them to https://zupy-ui.github.io
+# by pushing the build into the zupy-ui/zupy-ui.github.io repo (GitHub only serves the
+# org root from a repo with that name). Runs when the site or any package it renders changes.
 on:
   push:
     branches: [main]
@@ -16,16 +17,14 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 # One deploy at a time; a newer push replaces a queued one.
 concurrency:
-  group: pages
+  group: docs-deploy
   cancel-in-progress: true
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -37,19 +36,15 @@ jobs:
           node-version: 24
       - run: bun install --frozen-lockfile
       - run: bunx turbo run build --filter=@zupy/www
-        env:
-          BASE_PATH: /zupy/
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      # SITE_DEPLOY_KEY is the private half of a write deploy key on zupy-ui.github.io.
+      # Adds .nojekyll, so folders like __tsr/ are served as-is.
+      - uses: peaceiris/actions-gh-pages@v4
         with:
-          path: apps/www/.output/public
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          deploy_key: ${{ secrets.SITE_DEPLOY_KEY }}
+          external_repository: zupy-ui/zupy-ui.github.io
+          publish_branch: main
+          publish_dir: apps/www/.output/public
+          force_orphan: true
+          user_name: github-actions[bot]
+          user_email: 41898282+github-actions[bot]@users.noreply.github.com
+          full_commit_message: "deploy: ${{ github.sha }}"
