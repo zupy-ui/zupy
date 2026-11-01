@@ -1,46 +1,34 @@
 ---
 title: Introduction
-description: Playful, tactile React components. Chunky edges, hard shadows, springy motion.
-icon: Sparkles
+description: Tactile React components with chunky edges, hard shadows and springy motion.
 ---
 
-zupy is a small design system for playful apps: games, quizzes, kids' apps, anything that should feel fun to tap. Every raised element has an outline, a hard drop shadow, and sinks into that shadow when you press it.
+zupy is a small React design system with a playful, physical feel. Every raised element has an outline and a hard drop shadow, and it sinks into that shadow when you press it.
 
 <Preview>
-  <Button>Play now</Button>
-  <Button variant="accent">Join lobby</Button>
-  <Button variant="secondary">Settings</Button>
+  <Button>Get started</Button>
+  <Button variant="accent">Try it</Button>
+  <Button variant="secondary">Learn more</Button>
 </Preview>
 
-## Installation
+## Principles
 
-```bash
-bun add @zupy/ui
-```
+- **Tactile.** Things look like objects you can press, and respond when you do.
+- **Token first.** Every color, radius and lift is a CSS variable, so one set of components can look very different.
+- **Accessible.** Built on [Base UI](https://base-ui.com), so focus, keyboard and screen reader behavior come for free.
+- **Readable by AI.** Every page is available as Markdown, and the whole site is indexed at `/llms.txt`.
 
-Then import the styles after Tailwind in your app's CSS:
+## Built with
 
-```css
-@import "tailwindcss";
-@import "@zupy/ui/styles.css";
-```
+- [React 19](https://react.dev) and [Base UI](https://base-ui.com)
+- [Tailwind CSS v4](https://tailwindcss.com), with tokens as CSS variables
+- [class-variance-authority](https://cva.style) for variants
 
-zupy expects the **Fredoka** (headings) and **Inter** (body) fonts. Load them however your app loads fonts, or override `--zupy-font-display` and `--zupy-font-sans`.
+## Next steps
 
-## Themes
-
-Three themes ship with zupy. Set `data-theme` on any element, and add the `dark` class for dark mode:
-
-```html
-<html data-theme="arcade" class="dark">
-```
-
-| Theme    | Feel                                  |
-| -------- | ------------------------------------- |
-| `pop`    | Default. Cream paper, ink edges.      |
-| `arcade` | Navy outlines, blue and yellow.       |
-| `gloss`  | Borderless glossy tiles, green/yellow. |
-
-## Using zupy with AI
-
-Every docs page is available as Markdown by adding `.md` to its URL, and the whole site is indexed at [`/llms.txt`](/llms.txt) and [`/llms-full.txt`](/llms-full.txt). Point your coding agent there.
+<Cards>
+  <Card title="Installation" href="/docs/installation" description="Add zupy to a React app." />
+  <Card title="Theming" href="/docs/theming" description="Pick a theme or make your own." />
+  <Card title="Using with AI" href="/docs/ai" description="Point your coding agent at the docs." />
+  <Card title="Button" href="/docs/components/button" description="Start with the most pressable component." />
+</Cards>

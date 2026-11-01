@@ -1,0 +1,61 @@
+---
+title: Field
+description: A label, a control and its messages, wired together.
+---
+
+<Preview>
+  <Form className="w-72">
+    <Field name="name">
+      <FieldLabel>Display name</FieldLabel>
+      <Input required placeholder="Maya" />
+      <FieldDescription>Shown on your profile.</FieldDescription>
+      <FieldError match="valueMissing">Pick a name first.</FieldError>
+    </Field>
+    <Button type="submit">Save</Button>
+  </Form>
+</Preview>
+
+```tsx
+import {
+  Button,
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldLabel,
+  Form,
+  Input,
+} from "@zupy/ui";
+
+<Form onFormSubmit={(values) => save(values)}>
+  <Field name="name">
+    <FieldLabel>Display name</FieldLabel>
+    <Input required />
+    <FieldDescription>Shown on your profile.</FieldDescription>
+    <FieldError match="valueMissing">Pick a name first.</FieldError>
+  </Field>
+  <Button type="submit">Save</Button>
+</Form>
+```
+
+Submit the form above with an empty name to see the error. `FieldError` only shows when the control is invalid, and shakes when it appears. Wrap fields in zupy's `Form` so errors appear inline instead of as browser bubbles.
+
+## Form
+
+| Prop             | Type                                         | Default      |
+| ---------------- | -------------------------------------------- | ------------ |
+| `onFormSubmit`   | `(values: Record<string, unknown>) => void`  |              |
+| `validationMode` | `"onSubmit" \| "onBlur" \| "onChange"`       | `"onSubmit"` |
+| `errors`         | `Record<string, string \| string[]>`         |              |
+
+Built on [Base UI Form](https://base-ui.com/react/components/form).
+
+## Parts
+
+| Component          | Renders            | Notes                                              |
+| ------------------ | ------------------ | -------------------------------------------------- |
+| `Field`            | `div`              | Wraps everything; accepts `name`, `disabled`, `invalid`, `validate` |
+| `FieldLabel`       | `label`            | Linked to the control automatically                |
+| `FieldDescription` | `p`                | Read by screen readers with the control            |
+| `FieldError`       | `div`              | Pass `match` (e.g. `"valueMissing"`) to target one error |
+
+Built on [Base UI Field](https://base-ui.com/react/components/field).

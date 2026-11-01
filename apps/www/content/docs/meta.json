@@ -1,3 +1,11 @@
 {
-	"pages": ["index", "---Components---", "...components"]
+	"pages": [
+		"---Getting started---",
+		"index",
+		"installation",
+		"theming",
+		"ai",
+		"---Components---",
+		"...components"
+	]
 }

@@ -1,0 +1,49 @@
+---
+title: Checkbox
+description: A raised checkbox whose tick pops in.
+---
+
+<Preview>
+  <div className="flex flex-col gap-3">
+    <label className="flex items-center gap-2.5">
+      <Checkbox defaultChecked />
+      Email updates
+    </label>
+    <label className="flex items-center gap-2.5">
+      <Checkbox />
+      Weekly digest
+    </label>
+    <label className="flex items-center gap-2.5">
+      <Checkbox indeterminate />
+      Some selected
+    </label>
+    <label className="flex items-center gap-2.5 text-muted">
+      <Checkbox disabled />
+      Disabled
+    </label>
+  </div>
+</Preview>
+
+```tsx
+import { Checkbox } from "@zupy/ui";
+
+<label className="flex items-center gap-2.5">
+  <Checkbox defaultChecked />
+  Email updates
+</label>
+```
+
+Wrap the checkbox and its text in a `<label>` so clicking the text toggles it.
+
+## Props
+
+| Prop              | Type                         | Default |
+| ----------------- | ---------------------------- | ------- |
+| `checked`         | `boolean`                    |         |
+| `defaultChecked`  | `boolean`                    | `false` |
+| `onCheckedChange` | `(checked: boolean) => void` |         |
+| `indeterminate`   | `boolean`                    | `false` |
+| `disabled`        | `boolean`                    | `false` |
+| `name`            | `string`                     |         |
+
+Built on [Base UI Checkbox](https://base-ui.com/react/components/checkbox).

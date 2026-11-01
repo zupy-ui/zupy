@@ -1,0 +1,45 @@
+---
+title: Typography
+description: Rounded, heavy headings and readable body text.
+---
+
+<Preview>
+  <div className="flex flex-col gap-2">
+    <Heading level={1} size="display">Hello</Heading>
+    <Heading level={2}>A level 2 heading</Heading>
+    <Heading level={3}>A level 3 heading</Heading>
+    <Text tone="muted">Body text sits in Inter, headings in Fredoka.</Text>
+  </div>
+</Preview>
+
+```tsx
+import { Heading, Text } from "@zupy/ui";
+
+<Heading level={1}>Welcome back</Heading>
+<Text tone="muted">Here is what changed while you were away.</Text>
+```
+
+## Heading
+
+`level` picks the tag (`h1`–`h4`) and a matching size. Pass `size` to change the look without changing the tag.
+
+```tsx
+<Heading level={2} size="display">Big title, still an h2</Heading>
+```
+
+| Prop        | Type                                              | Default          |
+| ----------- | ------------------------------------------------- | ---------------- |
+| `level`     | `1 \| 2 \| 3 \| 4`                                | `2`              |
+| `size`      | `"display" \| "xl" \| "lg" \| "md" \| "sm"`       | from `level`     |
+| `render`    | `ReactElement`                                    |                  |
+
+## Text
+
+Renders a `<p>`. Use `render={<span />}` for inline text.
+
+| Prop     | Type                                              | Default     |
+| -------- | ------------------------------------------------- | ----------- |
+| `size`   | `"xs" \| "sm" \| "md" \| "lg"`                    | `"md"`      |
+| `tone`   | `"default" \| "muted" \| "primary" \| "danger"`   | `"default"` |
+| `weight` | `"regular" \| "medium" \| "bold"`                 | `"regular"` |
+| `render` | `ReactElement`                                    |             |

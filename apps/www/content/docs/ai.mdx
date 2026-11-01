@@ -1,0 +1,39 @@
+---
+title: Using with AI
+description: Give your coding agent everything it needs to build with zupy.
+---
+
+The docs are written so coding agents can read them as easily as people can.
+
+## llms.txt
+
+| URL               | Contents                                    |
+| ----------------- | ------------------------------------------- |
+| [`/llms.txt`](/llms.txt)           | An index of every page with a short summary |
+| [`/llms-full.txt`](/llms-full.txt) | Every page in full, in one file             |
+
+Paste either link into your agent, or add it to your project's rules file.
+
+## Markdown pages
+
+Add `.md` to any docs URL to get the page as plain Markdown, for example [`/docs/components/button.md`](/docs/components/button.md). Requests that send `Accept: text/markdown` get the Markdown version automatically.
+
+Every page also has a **Copy Markdown** button at the top.
+
+## Rules for your agent
+
+Add something like this to your `AGENTS.md` or `CLAUDE.md`:
+
+```md
+## UI
+
+- Use components from `@zupy/ui`. Docs: <zupy docs URL>/llms.txt
+- Style with zupy tokens (`bg-primary`, `text-muted`, `rounded-lg`), not raw colors.
+- For custom raised surfaces use the `raised`, `filled` and `pressable` utilities
+  instead of writing box shadows by hand.
+- Pass `render` to change the element, e.g. `<Button render={<a href="/" />}>`.
+```
+
+## Typed and documented
+
+Every component and prop has a JSDoc comment with an example, so agents get the same guidance in the editor as on this site.

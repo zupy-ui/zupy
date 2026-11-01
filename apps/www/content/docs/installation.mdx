@@ -1,0 +1,56 @@
+---
+title: Installation
+description: Add zupy to a React app that uses Tailwind CSS v4.
+---
+
+## Requirements
+
+- React 19
+- Tailwind CSS v4
+
+## 1. Install the package
+
+```bash
+bun add @zupy/ui
+```
+
+npm, pnpm and yarn work too.
+
+## 2. Import the styles
+
+Import zupy right after Tailwind in your main CSS file. This adds the tokens, the theme and the tactile utilities (`raised`, `filled`, `pressable`).
+
+```css title="app.css"
+@import "tailwindcss";
+@import "@zupy/ui/styles.css";
+```
+
+## 3. Load the fonts
+
+zupy uses **Fredoka** for headings and buttons and **Inter** for body text. Load them however your app loads fonts, for example from Google Fonts:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400..700&family=Inter:wght@400..900&display=swap"
+/>
+```
+
+To use other fonts, override the tokens:
+
+```css
+:root {
+  --zupy-font-display: "Baloo 2", system-ui, sans-serif;
+  --zupy-font-sans: "Nunito", system-ui, sans-serif;
+}
+```
+
+## 4. Use a component
+
+```tsx
+import { Button } from "@zupy/ui";
+
+export function App() {
+  return <Button>Hello zupy</Button>;
+}
+```

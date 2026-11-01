@@ -1,0 +1,30 @@
+---
+title: Icon Button
+description: A square button holding a single icon.
+---
+
+<Preview>
+  <IconButton aria-label="Add">
+    <Plus />
+  </IconButton>
+  <IconButton aria-label="Like" variant="accent">
+    <Heart />
+  </IconButton>
+  <IconButton aria-label="Settings" variant="secondary">
+    <Settings />
+  </IconButton>
+  <IconButton aria-label="Settings" variant="ghost">
+    <Settings />
+  </IconButton>
+</Preview>
+
+```tsx
+import { IconButton } from "@zupy/ui";
+import { Settings } from "lucide-react";
+
+<IconButton aria-label="Settings" variant="secondary">
+  <Settings />
+</IconButton>
+```
+
+`aria-label` is required, because an icon alone gives screen readers nothing to read. All other props match [Button](/docs/components/button).

@@ -1,0 +1,39 @@
+---
+title: Input
+description: Single and multi-line text inputs.
+---
+
+<Preview>
+  <div className="flex w-72 flex-col gap-3">
+    <Input placeholder="Your name" />
+    <Textarea placeholder="Say something nice" />
+  </div>
+</Preview>
+
+```tsx
+import { Input, Textarea } from "@zupy/ui";
+
+<Input placeholder="Your name" />
+<Textarea placeholder="Say something nice" />
+```
+
+Put an input inside a [Field](/docs/components/field) to give it a label, a description and validation messages.
+
+## Sizes
+
+<Preview>
+  <div className="flex w-72 flex-col gap-3">
+    <Input size="sm" placeholder="Small" />
+    <Input size="md" placeholder="Medium" />
+    <Input size="lg" placeholder="Large" />
+  </div>
+</Preview>
+
+## Props
+
+| Prop       | Type                   | Default |
+| ---------- | ---------------------- | ------- |
+| `size`     | `"sm" \| "md" \| "lg"` | `"md"`  |
+| `rows`     | `number` (Textarea)    | `4`     |
+
+All other props are passed to the native element through [Base UI Input](https://base-ui.com/react/components/input).
