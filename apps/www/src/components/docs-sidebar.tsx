@@ -16,23 +16,27 @@ import {
 	type ReactNode,
 	useSyncExternalStore,
 } from "react";
+import { Logo } from "@/components/logo";
 
 const isActive = (url: string, pathname: string) =>
 	url.replace(/\/$/, "") === pathname.replace(/\/$/, "");
 
-/** Sidebar rows: muted text, a soft hover, and the active page as a raised accent pill. */
+/** Sidebar rows: muted text, a soft hover, and the active page as a raised primary pill. */
 const rowClass = cn(
 	"flex h-9 w-full items-center gap-2 rounded-md px-3 text-start",
-	"font-display font-medium text-[0.9375rem] text-muted transition-colors duration-(--zupy-duration-fast)",
+	// Only the hover background animates: fading the text color while the pill snaps in
+	// leaves it unreadable (muted on blue, white on cream) for a moment.
+	"font-display font-medium text-[0.9375rem] text-muted transition-[background-color] duration-(--zupy-duration-fast)",
 	"hover:bg-surface hover:text-foreground [&_svg]:size-4 [&_svg]:shrink-0",
 	// Page icons arrive wrapped in a span; show them a bit chunkier than plain icons.
 	"[&>span:has(svg)]:flex [&>span>svg]:size-5",
 	"data-[active=true]:raised data-[active=true]:filled data-[active=true]:depth-sm",
-	// On the accent pill, lighten the icon's fill so it doesn't vanish into the background.
-	"data-[active=true]:[--zupy-icon-fill:color-mix(in_oklab,var(--zupy-accent),white_65%)]",
-	"data-[active=true]:[--zupy-icon-outline:var(--zupy-accent-foreground)]",
-	"data-[active=true]:font-semibold data-[active=true]:text-accent-foreground",
-	"data-[active=true]:[--zupy-fill:var(--zupy-accent)] data-[active=true]:hover:text-accent-foreground",
+	// On the blue pill, flip the icon to white with blue details, like the logo.
+	"data-[active=true]:[--zupy-icon-fill:var(--zupy-primary-foreground)]",
+	"data-[active=true]:[--zupy-icon-ink:var(--zupy-primary)]",
+	"data-[active=true]:[--zupy-icon-outline:var(--zupy-edge)]",
+	"data-[active=true]:font-semibold data-[active=true]:text-primary-foreground",
+	"data-[active=true]:[--zupy-fill:var(--zupy-primary)] data-[active=true]:hover:text-primary-foreground",
 );
 
 function Item({ item }: { item: PageTree.Item }) {
@@ -106,22 +110,16 @@ export const sidebarComponents: Partial<SidebarPageTreeComponents> = {
 	Folder,
 };
 
-/** The wordmark: a tiny raised tile with the brand letter. */
 export function NavTitle({ className, ...props }: ComponentProps<"a">) {
 	return (
 		<a
 			href="/"
+			aria-label="zupy home"
 			// Fumadocs passes its own sizing; ours goes last so the wordmark stays chunky.
-			className={cn(
-				className,
-				"inline-flex items-center gap-2 font-bold font-display text-xl tracking-tight",
-			)}
+			className={cn(className, "inline-flex items-center")}
 			{...props}
 		>
-			<span className="raised filled depth-sm inline-flex size-7 items-center justify-center rounded-sm text-accent-foreground text-base [--zupy-fill:var(--zupy-accent)]">
-				z
-			</span>
-			zupy
+			<Logo size={31} />
 		</a>
 	);
 }

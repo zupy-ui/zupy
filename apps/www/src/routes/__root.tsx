@@ -21,8 +21,12 @@ export const Route = createRootRoute({
 				content:
 					"Chunky, tactile React components with hard shadows and springy motion.",
 			},
+			{ name: "theme-color", content: "#0055ff" },
 		],
 		links: [
+			{ rel: "icon", href: "/favicon.ico", sizes: "48x48" },
+			{ rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+			{ rel: "manifest", href: "/site.webmanifest" },
 			{ rel: "preconnect", href: "https://fonts.googleapis.com" },
 			{
 				rel: "preconnect",

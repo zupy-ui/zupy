@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { themes } from "@zupy/tokens";
 import { Button } from "@zupy/ui";
 import { useState } from "react";
+import { Logo } from "@/components/logo";
 
 export const Route = createFileRoute("/")({
 	component: Home,
@@ -11,7 +12,7 @@ type ThemeName = keyof typeof themes;
 
 const themeBlurb: Record<ThemeName, string> = {
 	pop: "Cream paper, ink edges",
-	arcade: "Navy outlines, Piko style",
+	arcade: "Navy outlines, bold blue",
 	gloss: "Borderless glossy tiles",
 };
 
@@ -24,8 +25,8 @@ function Home() {
 			className="min-h-screen bg-background text-foreground"
 		>
 			<header className="mx-auto flex max-w-6xl items-center justify-between px-4 py-5 sm:px-6">
-				<Link to="/" className="font-bold font-display text-2xl tracking-tight">
-					zupy
+				<Link to="/" aria-label="zupy home">
+					<Logo size={40} />
 				</Link>
 				<nav className="flex items-center gap-2">
 					<Button
@@ -47,7 +48,7 @@ function Home() {
 
 			<main className="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
 				<section className="pt-12 pb-16 text-center sm:pt-20">
-					<span className="raised inline-block rounded-full bg-accent px-3 py-1 font-display font-semibold text-accent-foreground text-sm">
+					<span className="raised inline-block rounded-full bg-primary px-3 py-1 font-display font-semibold text-primary-foreground text-sm">
 						v0 · early preview
 					</span>
 					<h1 className="mx-auto mt-6 max-w-3xl font-bold font-display text-5xl leading-[1.05] tracking-tight sm:text-7xl">
@@ -87,7 +88,7 @@ function Home() {
 								<Button
 									key={name}
 									size="sm"
-									variant={name === theme ? "accent" : "secondary"}
+									variant={name === theme ? "primary" : "secondary"}
 									aria-pressed={name === theme}
 									onClick={() => setTheme(name)}
 									className="capitalize"
