@@ -98,9 +98,17 @@
 	}
 }
 
+/* A quick squash when something is typed or tapped in place. */
+@keyframes zupy-bump {
+	50% {
+		transform: scale(1.1);
+	}
+}
+
 @theme inline {
 	--animate-pop: zupy-pop 260ms var(--zupy-ease-pop) both;
 	--animate-shake: zupy-shake 500ms ease-in-out;
+	--animate-bump: zupy-bump 140ms ease-out;
 }
 
 @layer base {

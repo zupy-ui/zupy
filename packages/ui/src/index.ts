@@ -28,6 +28,11 @@ export {
 } from "@/components/input";
 export { Kbd, type KbdProps } from "@/components/kbd";
 export {
+	PinInput,
+	type PinInputProps,
+	pinInputSlotVariants,
+} from "@/components/pin-input";
+export {
 	Radio,
 	RadioGroup,
 	type RadioGroupProps,
@@ -40,7 +45,6 @@ export {
 	type SegmentedProps,
 } from "@/components/segmented";
 export { Switch, type SwitchProps } from "@/components/switch";
-export { Tile, type TileProps, tileVariants } from "@/components/tile";
 export {
 	Heading,
 	type HeadingProps,
