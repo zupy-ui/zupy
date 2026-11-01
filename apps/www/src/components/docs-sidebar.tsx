@@ -25,7 +25,12 @@ const rowClass = cn(
 	"flex h-9 w-full items-center gap-2 rounded-md px-3 text-start",
 	"font-display font-medium text-[0.9375rem] text-muted transition-colors duration-(--zupy-duration-fast)",
 	"hover:bg-surface hover:text-foreground [&_svg]:size-4 [&_svg]:shrink-0",
+	// Page icons arrive wrapped in a span; show them a bit chunkier than plain icons.
+	"[&>span:has(svg)]:flex [&>span>svg]:size-5",
 	"data-[active=true]:raised data-[active=true]:filled data-[active=true]:depth-sm",
+	// On the accent pill, lighten the icon's fill so it doesn't vanish into the background.
+	"data-[active=true]:[--zupy-icon-fill:color-mix(in_oklab,var(--zupy-accent),white_65%)]",
+	"data-[active=true]:[--zupy-icon-outline:var(--zupy-accent-foreground)]",
 	"data-[active=true]:font-semibold data-[active=true]:text-accent-foreground",
 	"data-[active=true]:[--zupy-fill:var(--zupy-accent)] data-[active=true]:hover:text-accent-foreground",
 );

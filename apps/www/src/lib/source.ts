@@ -1,7 +1,9 @@
 import { llms, loader } from "fumadocs-core/source";
-import { lucideIconsPlugin } from "fumadocs-core/source/lucide-icons";
 import { defineDocs } from "fumadocs-mdx/macro";
-import { docsRoute } from "./shared";
+import { icons as lucide } from "lucide-react";
+import { createElement } from "react";
+import { pageIcons } from "@/components/page-icons";
+import { docsRoute } from "@/lib/shared";
 
 export const docs = defineDocs({
 	dir: "content/docs",
@@ -16,7 +18,12 @@ export const docs = defineDocs({
 export const source = loader({
 	source: docs.toFumadocsSource(),
 	baseUrl: docsRoute,
-	plugins: [lucideIconsPlugin()],
+	// Frontmatter `icon:` resolves to our own zupy icons first, then Lucide.
+	icon(name) {
+		if (!name) return;
+		const Icon = pageIcons[name] ?? lucide[name as keyof typeof lucide];
+		return Icon ? createElement(Icon) : undefined;
+	},
 });
 
 export const docsLlms = llms(source, {
