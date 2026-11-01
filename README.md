@@ -6,7 +6,7 @@
 
 <p align="center">Tactile React components with chunky edges, hard shadows and springy motion.</p>
 
-<p align="center"><a href="https://zupy-ui.github.io/zupy/"><strong>Documentation</strong></a></p>
+<p align="center"><a href="https://zupy-ui.github.io"><strong>Documentation</strong></a></p>
 
 ## Install
 
@@ -40,7 +40,7 @@ bun install
 bun run dev
 ```
 
-The docs run at http://localhost:3000. Every push to `main` that touches the docs or a package redeploys https://zupy-ui.github.io/zupy/.
+The docs run at http://localhost:3000. Every push to `main` that touches the docs or a package redeploys https://zupy-ui.github.io.
 
 ## License
 

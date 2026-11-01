@@ -47,13 +47,14 @@ Icons are plain SVG built by `createIcon`. They read `--zupy-icon-fill`, `--zupy
 
 ### Static hosting
 
-The docs are plain files on GitHub Pages at `https://zupy-ui.github.io/zupy/`, with no server at runtime:
+The docs are plain files on GitHub Pages at `https://zupy-ui.github.io`, with no server at runtime:
 
-- **Base path.** `BASE_PATH=/zupy/` sets Vite's `base` and the router `basepath`. Raw URLs go through `withBase()` in `src/lib/shared.ts`.
+- **Base path.** The site is served from the domain root. `BASE_PATH` (e.g. `/docs/`) can still move it into a subfolder: it sets Vite's `base` and the router `basepath`, and raw URLs go through `withBase()` in `src/lib/shared.ts`.
+- **AI copies.** Every page has a prerendered `/docs/<page>.md`, and `llms.txt` links to them by absolute URL.
 - **Loader data.** The docs route's server function uses `staticLoaderMiddleware` (`src/lib/static-loader.ts`). During prerender it saves each result to `__tsr/staticServerFnCache/<hash>.json`, and in the browser it fetches that file instead of calling a server. It's adapted from `@tanstack/start-static-server-functions`, which doesn't support a base path.
 - **Search.** `/api/search` is prerendered as a static Orama index, and `components/search.tsx` searches it in the browser.
 - **OG images.** Nitro prerenders `/og/docs/**/image.webp`, because TanStack's prerender saves responses as text.
-- **Deploy.** `.github/workflows/docs.yml` builds with the base path and publishes `apps/www/.output/public` on pushes to `main` that touch the site or packages. `.github/workflows/ci.yml` runs lint, typecheck and build on every push and PR.
+- **Deploy.** GitHub only serves an org's root domain from a repo named `<org>.github.io`, so `.github/workflows/docs.yml` builds here and pushes `apps/www/.output/public` into `zupy-ui/zupy-ui.github.io` with a deploy key (secret `SITE_DEPLOY_KEY`), on pushes to `main` that touch the site or packages. `.github/workflows/ci.yml` runs lint, typecheck and build on every push and PR.
 
 ## Dev vs build
 
