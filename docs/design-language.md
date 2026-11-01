@@ -6,17 +6,17 @@ zupy should feel physical. Things look like objects you can press, and they resp
 
 Every raised element is built from four ingredients:
 
-| Ingredient | Token | Default (`pop`) | Notes |
-| --- | --- | --- | --- |
-| Outline | `--zupy-edge-width`, `--zupy-edge` | `2px`, ink | `0px` gives a borderless look (`gloss`) |
-| Lift | `--zupy-lift` | `4px` | A hard shadow, no blur, in the edge color |
-| Press | `--zupy-press` | `3px` | How far it sinks on press; keep it below lift |
-| Gloss | `--zupy-gloss` | `0` | `1` adds a top highlight, bottom shade and gradient fill |
+| Ingredient | Token                              | Default (`pop`) | Notes                                                    |
+| ---------- | ---------------------------------- | --------------- | -------------------------------------------------------- |
+| Outline    | `--zupy-edge-width`, `--zupy-edge` | `2px`, ink      | `0px` gives a borderless look (`gloss`)                  |
+| Lift       | `--zupy-lift`                      | `4px`           | A hard shadow, no blur, in the edge color                |
+| Press      | `--zupy-press`                     | `3px`           | How far it sinks on press; keep it below lift            |
+| Gloss      | `--zupy-gloss`                     | `0`             | `1` adds a top highlight, bottom shade and gradient fill |
 
 Use the utilities instead of writing shadows by hand:
 
 ```tsx
-<div className="raised filled pressable rounded-lg [--zupy-fill:var(--zupy-primary)]" />
+<div className="raised filled pressable rounded-lg [--zupy-fill:var(--zupy-primary)]" />;
 ```
 
 - `raised`: outline + hard shadow
@@ -28,15 +28,15 @@ Not everything should be raised. Inputs and tracks are **sunken** (soft border, 
 
 ## Color
 
-| Role | Use for |
-| --- | --- |
-| `primary` | The default highlight: main actions, selected states, active navigation, icons. It's the logo blue (`#005afd`). |
-| `accent` | A second highlight (yellow) when you need contrast with primary. Never the default. |
-| `success`, `warning`, `danger` | Status only |
-| `surface` | Tints, tracks, hovers |
-| `card` | Cards, inputs, secondary buttons |
-| `muted` | Secondary text |
-| `edge` | Outlines and hard shadows |
+| Role                           | Use for                                                                                                         |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------- |
+| `primary`                      | The default highlight: main actions, selected states, active navigation, icons. It's the logo blue (`#005afd`). |
+| `accent`                       | A second highlight (yellow) when you need contrast with primary. Never the default.                             |
+| `success`, `warning`, `danger` | Status only                                                                                                     |
+| `surface`                      | Tints, tracks, hovers                                                                                           |
+| `card`                         | Cards, inputs, secondary buttons                                                                                |
+| `muted`                        | Secondary text                                                                                                  |
+| `edge`                         | Outlines and hard shadows                                                                                       |
 
 Every fill has a `-foreground` partner for text on top of it. Always pair them.
 
@@ -52,13 +52,13 @@ Radii come from `--zupy-radius-sm` to `-xl`. Bigger elements get bigger radii. P
 
 ## Motion
 
-| Token | Use |
-| --- | --- |
-| `ease-pop` | Entrances and toggles that should overshoot a little (checkbox tick, switch thumb) |
-| `ease-snap` | Movement that should settle without bounce |
-| `--zupy-duration-press` (80ms) | Press feedback |
-| `--zupy-duration-fast` (140ms) | Hovers |
-| `--zupy-duration-base` / `slow` | Larger movement |
+| Token                           | Use                                                                                |
+| ------------------------------- | ---------------------------------------------------------------------------------- |
+| `ease-pop`                      | Entrances and toggles that should overshoot a little (checkbox tick, switch thumb) |
+| `ease-snap`                     | Movement that should settle without bounce                                         |
+| `--zupy-duration-press` (80ms)  | Press feedback                                                                     |
+| `--zupy-duration-fast` (140ms)  | Hovers                                                                             |
+| `--zupy-duration-base` / `slow` | Larger movement                                                                    |
 
 Rules:
 

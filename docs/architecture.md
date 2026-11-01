@@ -55,10 +55,10 @@ Tokens are **not** aliased, because their CSS is generated. After changing a the
 
 ## Why these choices
 
-| Choice | Reason |
-| --- | --- |
-| Base UI | Accessible, unstyled primitives with a `render` prop for composition |
-| Tailwind v4 + CSS variables | Themes are just variables; no config needed in the consuming app |
-| cva | Typed variants that agents and editors understand |
-| Tokens in TypeScript | One source for web CSS now and React Native later |
-| Separate icons package | Icons work without the components, and stay tree-shakable |
+| Choice                      | Reason                                                               |
+| --------------------------- | -------------------------------------------------------------------- |
+| Base UI                     | Accessible, unstyled primitives with a `render` prop for composition |
+| Tailwind v4 + CSS variables | Themes are just variables; no config needed in the consuming app     |
+| cva                         | Typed variants that agents and editors understand                    |
+| Tokens in TypeScript        | One source for web CSS now and React Native later                    |
+| Separate icons package      | Icons work without the components, and stay tree-shakable            |

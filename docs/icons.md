@@ -11,12 +11,12 @@ zupy icons look like tiny raised tiles: a filled shape with a thick outline and 
 └──────┘ shadow    the same body, shifted 1.75px down, in the edge color (automatic)
 ```
 
-| Layer | Color variable | Default |
-| --- | --- | --- |
-| body fill | `--zupy-icon-fill` | `--zupy-primary` |
-| outline + `outside` | `--zupy-icon-outline` | `--zupy-foreground` |
-| `details` | `--zupy-icon-ink` | `--zupy-primary-foreground` |
-| shadow | `--zupy-edge` | ink |
+| Layer               | Color variable        | Default                     |
+| ------------------- | --------------------- | --------------------------- |
+| body fill           | `--zupy-icon-fill`    | `--zupy-primary`            |
+| outline + `outside` | `--zupy-icon-outline` | `--zupy-foreground`         |
+| `details`           | `--zupy-icon-ink`     | `--zupy-primary-foreground` |
+| shadow              | `--zupy-edge`         | ink                         |
 
 Two inks keep every part readable: in dark mode the outline is light, so strokes outside the body stay visible against the background, while details on the blue body stay white.
 

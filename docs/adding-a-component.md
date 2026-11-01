@@ -21,12 +21,15 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/cn";
 import { disabledStyle, focusRing } from "@/lib/styles";
 
-export const thingVariants = cva(["raised filled pressable rounded-lg", focusRing, disabledStyle], {
-	variants: {
-		size: { sm: "h-9 px-3", md: "h-11 px-4" },
+export const thingVariants = cva(
+	["raised filled pressable rounded-lg", focusRing, disabledStyle],
+	{
+		variants: {
+			size: { sm: "h-9 px-3", md: "h-11 px-4" },
+		},
+		defaultVariants: { size: "md" },
 	},
-	defaultVariants: { size: "md" },
-});
+);
 
 export interface ThingProps
 	extends Omit<BaseThing.Props, "className">,
@@ -41,7 +44,9 @@ export interface ThingProps
  * <Thing size="sm">Hello</Thing>
  */
 export function Thing({ size, className, ...props }: ThingProps) {
-	return <BaseThing className={cn(thingVariants({ size }), className)} {...props} />;
+	return (
+		<BaseThing className={cn(thingVariants({ size }), className)} {...props} />
+	);
 }
 ```
 
@@ -79,7 +84,7 @@ Add the component, its props type and its variants to `packages/ui/src/index.ts`
 
 1. Create `apps/www/content/docs/components/<name>.mdx`:
 
-   ~~~mdx
+   ````mdx
    ---
    title: Thing
    description: One sentence, same as the JSDoc.
@@ -99,7 +104,7 @@ Add the component, its props type and its variants to `packages/ui/src/index.ts`
 
    | Prop | Type | Default |
    | ---- | ---- | ------- |
-   ~~~
+   ````
 
 2. Register it in `apps/www/src/components/mdx.tsx` so the preview can render it.
 3. The sidebar picks the page up automatically from the `components/` folder.

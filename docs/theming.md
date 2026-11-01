@@ -4,13 +4,13 @@ How to add a theme, or a new token to every theme. For using themes in an app, s
 
 ## Where things live
 
-| File | Holds |
-| --- | --- |
-| `packages/tokens/src/types.ts` | The shape of a theme: color roles (`ColorRole`) and `Shape` |
-| `packages/tokens/src/themes.ts` | The themes: `pop` (default), `arcade`, `gloss` |
-| `packages/tokens/src/motion.ts` | Easings, durations and fonts shared by all themes |
-| `packages/tokens/src/css.ts` | Turns themes into CSS (`toCss`) and the Tailwind mapping (`toTailwindTheme`) |
-| `packages/tokens/scripts/build-css.ts` | Writes `dist/tokens.css` and `dist/theme.css` |
+| File                                   | Holds                                                                        |
+| -------------------------------------- | ---------------------------------------------------------------------------- |
+| `packages/tokens/src/types.ts`         | The shape of a theme: color roles (`ColorRole`) and `Shape`                  |
+| `packages/tokens/src/themes.ts`        | The themes: `pop` (default), `arcade`, `gloss`                               |
+| `packages/tokens/src/motion.ts`        | Easings, durations and fonts shared by all themes                            |
+| `packages/tokens/src/css.ts`           | Turns themes into CSS (`toCss`) and the Tailwind mapping (`toTailwindTheme`) |
+| `packages/tokens/scripts/build-css.ts` | Writes `dist/tokens.css` and `dist/theme.css`                                |
 
 ## Adding a theme
 
