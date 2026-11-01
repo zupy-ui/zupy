@@ -29,6 +29,9 @@ export interface Shape {
 	lift: string;
 	/** How far a raised element sinks when pressed. Usually a bit less than `lift`. */
 	press: string;
+	/** Smaller lift and press for compact controls such as checkboxes and keys. */
+	liftSm: string;
+	pressSm: string;
 	/** 0 for flat fills, 1 for glossy gradient fills with a highlight edge. */
 	gloss: number;
 	radius: { sm: string; md: string; lg: string; xl: string };

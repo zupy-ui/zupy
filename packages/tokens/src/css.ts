@@ -13,6 +13,8 @@ const shapeVars = (s: Shape) => ({
 	"edge-width": s.edgeWidth,
 	lift: s.lift,
 	press: s.press,
+	"lift-sm": s.liftSm,
+	"press-sm": s.pressSm,
 	gloss: String(s.gloss),
 	"radius-sm": s.radius.sm,
 	"radius-md": s.radius.md,

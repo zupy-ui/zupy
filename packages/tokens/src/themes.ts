@@ -1,11 +1,12 @@
 import type { Theme } from "@/types";
 
 const radius = { sm: "0.5rem", md: "0.875rem", lg: "1.25rem", xl: "1.75rem" };
+const depth = { lift: "4px", press: "3px", liftSm: "2px", pressSm: "2px" };
 
 /** Default theme: cream paper, ink outlines, blue and yellow. */
 export const pop: Theme = {
 	name: "pop",
-	shape: { edgeWidth: "2px", lift: "4px", press: "3px", gloss: 0, radius },
+	shape: { edgeWidth: "2px", gloss: 0, ...depth, radius },
 	light: {
 		background: "#fff8ec",
 		foreground: "#1b1530",
@@ -51,7 +52,7 @@ export const pop: Theme = {
 /** Piko: navy outlines, logo blue, yellow highlights. */
 export const arcade: Theme = {
 	name: "arcade",
-	shape: { edgeWidth: "2px", lift: "4px", press: "3px", gloss: 0, radius },
+	shape: { edgeWidth: "2px", gloss: 0, ...depth, radius },
 	light: {
 		background: "#eef3ff",
 		foreground: "#07144d",
@@ -97,7 +98,7 @@ export const arcade: Theme = {
 /** Guessword: borderless glossy tiles in green and yellow. */
 export const gloss: Theme = {
 	name: "gloss",
-	shape: { edgeWidth: "0px", lift: "4px", press: "3px", gloss: 1, radius },
+	shape: { edgeWidth: "0px", gloss: 1, ...depth, radius },
 	light: {
 		background: "#f3f4f7",
 		foreground: "#141519",
