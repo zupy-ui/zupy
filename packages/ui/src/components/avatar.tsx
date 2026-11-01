@@ -6,7 +6,7 @@ import { cn } from "@/lib/cn";
 export const avatarVariants = cva(
 	[
 		"relative inline-flex shrink-0 select-none items-center justify-center overflow-hidden",
-		"border-(length:--zupy-edge-width) border-edge bg-accent font-display font-semibold text-accent-foreground",
+		"border-(length:--zupy-edge-width) border-edge bg-primary font-display font-semibold text-primary-foreground",
 	],
 	{
 		variants: {

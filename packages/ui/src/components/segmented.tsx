@@ -61,8 +61,9 @@ export function SegmentedItem({ className, ...props }: SegmentedItemProps) {
 		<BaseToggle
 			className={cn(
 				"inline-flex h-9 cursor-pointer select-none items-center justify-center gap-2 whitespace-nowrap rounded-md px-4",
-				"font-display font-semibold text-muted text-sm transition-colors duration-(--zupy-duration-fast) hover:text-foreground",
-				"data-pressed:raised data-pressed:filled data-pressed:depth-sm data-pressed:text-accent-foreground data-pressed:[--zupy-fill:var(--zupy-accent)]",
+				// No color transition: the selected fill snaps in, so a fading label would vanish briefly.
+				"font-display font-semibold text-muted text-sm hover:text-foreground",
+				"data-pressed:raised data-pressed:filled data-pressed:depth-sm data-pressed:text-primary-foreground data-pressed:[--zupy-fill:var(--zupy-primary)]",
 				focusRing,
 				disabledStyle,
 				className,
