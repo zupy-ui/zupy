@@ -3,7 +3,10 @@ import type { Theme } from "@/types";
 const radius = { sm: "0.5rem", md: "0.875rem", lg: "1.25rem", xl: "1.75rem" };
 const depth = { lift: "4px", press: "3px", liftSm: "2px", pressSm: "2px" };
 
-/** Default theme: cream paper, ink outlines, blue and yellow. */
+/** zupy's brand blue, sampled from the logo. */
+const brandBlue = "#005afd";
+
+/** Default theme: cream paper, ink outlines, brand blue with yellow as a second highlight. */
 export const pop: Theme = {
 	name: "pop",
 	shape: { edgeWidth: "2px", gloss: 0, ...depth, radius },
@@ -15,8 +18,8 @@ export const pop: Theme = {
 		card: "#ffffff",
 		border: "#e3d6bf",
 		edge: "#1b1530",
-		ring: "#0055ff",
-		primary: "#0055ff",
+		ring: brandBlue,
+		primary: brandBlue,
 		"primary-foreground": "#ffffff",
 		accent: "#ffd400",
 		"accent-foreground": "#1b1530",
@@ -35,8 +38,8 @@ export const pop: Theme = {
 		card: "#1b172a",
 		border: "#352e4d",
 		edge: "#000000",
-		ring: "#ffd400",
-		primary: "#3d7bff",
+		ring: "#5c93ff",
+		primary: brandBlue,
 		"primary-foreground": "#ffffff",
 		accent: "#ffd400",
 		"accent-foreground": "#1b1530",
