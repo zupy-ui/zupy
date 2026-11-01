@@ -30,6 +30,29 @@ html {
 	scrollbar-gutter: stable;
 }
 
+/* Sidebar: same paper as the page, items come from components/docs-sidebar.tsx. */
+#nd-sidebar,
+#nd-sidebar-mobile {
+	background-color: var(--zupy-background);
+	border-color: var(--zupy-border);
+}
+
+/* The footer row that holds the GitHub link and theme switch: drop its box. */
+#nd-sidebar div:has(> [aria-label="Color theme"]) {
+	border: 0;
+	background: transparent;
+	padding: 0;
+}
+
+/* Fumadocs' search button, restyled as a raised zupy field with key caps. */
+[data-search-full] {
+	@apply raised filled pressable depth-sm h-10 rounded-lg px-3 font-display font-medium text-muted text-sm [--zupy-fill:var(--zupy-card)];
+
+	& kbd {
+		@apply raised filled depth-sm inline-flex h-6 min-w-6 items-center justify-center rounded-sm px-1.5 font-mono font-semibold text-foreground text-xs [--zupy-fill:var(--zupy-card)];
+	}
+}
+
 h1,
 h2,
 h3 {

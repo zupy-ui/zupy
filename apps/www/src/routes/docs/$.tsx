@@ -11,6 +11,11 @@ import {
 	ViewOptionsPopover,
 } from "fumadocs-ui/layouts/docs/page";
 import { Suspense, use } from "react";
+import {
+	NavTitle,
+	sidebarComponents,
+	ThemeSwitch,
+} from "@/components/docs-sidebar";
 import { useMDXComponents } from "@/components/mdx";
 import { baseOptions } from "@/lib/layout.shared";
 import { getPageImageUrl, getPageMarkdownUrl, gitConfig } from "@/lib/shared";
@@ -78,7 +83,12 @@ function Page() {
 	);
 
 	return (
-		<DocsLayout {...baseOptions()} tree={pageTree}>
+		<DocsLayout
+			{...baseOptions()}
+			tree={pageTree}
+			sidebar={{ components: sidebarComponents }}
+			slots={{ navTitle: NavTitle, themeSwitch: ThemeSwitch }}
+		>
 			<Suspense>
 				<Content path={path} markdownUrl={markdownUrl} />
 			</Suspense>
