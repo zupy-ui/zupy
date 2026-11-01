@@ -1,0 +1,8 @@
+{
+	"extends": "@zupy/config/tsconfig.base.json",
+	"compilerOptions": {
+		"paths": { "@/*": ["./src/*"] },
+		"types": ["bun"]
+	},
+	"include": ["src", "scripts"]
+}

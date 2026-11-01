@@ -1,0 +1,29 @@
+{
+	"name": "@zupy/tokens",
+	"version": "0.0.0",
+	"description": "Design tokens for zupy: colors, shape and motion for web and React Native.",
+	"type": "module",
+	"sideEffects": [
+		"**/*.css"
+	],
+	"files": [
+		"dist"
+	],
+	"exports": {
+		".": {
+			"types": "./dist/index.d.mts",
+			"import": "./dist/index.mjs"
+		},
+		"./tokens.css": "./dist/tokens.css",
+		"./theme.css": "./dist/theme.css"
+	},
+	"scripts": {
+		"build": "tsdown && bun scripts/build-css.ts",
+		"typecheck": "tsc --noEmit"
+	},
+	"devDependencies": {
+		"@types/bun": "^1.4.4",
+		"@zupy/config": "workspace:*",
+		"tsdown": "^0.23.4"
+	}
+}
