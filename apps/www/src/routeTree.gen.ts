@@ -15,6 +15,8 @@ import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as ApiSearchRouteImport } from './routes/api/search'
 import { Route as DocsSplatRouteImport } from './routes/docs/$'
 import { Route as DocsChar123Char125DotmdRouteImport } from './routes/docs/{$}[.]md'
+import { Route as ExamplesIndexRouteImport } from './routes/examples/index'
+import { Route as ExamplesIdRouteImport } from './routes/examples/$id'
 import { Route as OgDocsSplatRouteImport } from './routes/og/docs/$'
 
 const IndexRoute = IndexRouteImport.update({
@@ -47,6 +49,16 @@ const DocsChar123Char125DotmdRoute = DocsChar123Char125DotmdRouteImport.update({
   path: '/docs/{$}.md',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExamplesIndexRoute = ExamplesIndexRouteImport.update({
+  id: '/examples/',
+  path: '/examples/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExamplesIdRoute = ExamplesIdRouteImport.update({
+  id: '/examples/$id',
+  path: '/examples/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OgDocsSplatRoute = OgDocsSplatRouteImport.update({
   id: '/og/docs/$',
   path: '/og/docs/$',
@@ -60,6 +72,8 @@ export interface FileRoutesByFullPath {
   '/api/search': typeof ApiSearchRoute
   '/docs/$': typeof DocsSplatRoute
   '/docs/{$}.md': typeof DocsChar123Char125DotmdRoute
+  '/examples/$id': typeof ExamplesIdRoute
+  '/examples/': typeof ExamplesIndexRoute
   '/og/docs/$': typeof OgDocsSplatRoute
 }
 export interface FileRoutesByTo {
@@ -69,6 +83,8 @@ export interface FileRoutesByTo {
   '/api/search': typeof ApiSearchRoute
   '/docs/$': typeof DocsSplatRoute
   '/docs/{$}.md': typeof DocsChar123Char125DotmdRoute
+  '/examples/$id': typeof ExamplesIdRoute
+  '/examples': typeof ExamplesIndexRoute
   '/og/docs/$': typeof OgDocsSplatRoute
 }
 export interface FileRoutesById {
@@ -79,6 +95,8 @@ export interface FileRoutesById {
   '/api/search': typeof ApiSearchRoute
   '/docs/$': typeof DocsSplatRoute
   '/docs/{$}.md': typeof DocsChar123Char125DotmdRoute
+  '/examples/$id': typeof ExamplesIdRoute
+  '/examples/': typeof ExamplesIndexRoute
   '/og/docs/$': typeof OgDocsSplatRoute
 }
 export interface FileRouteTypes {
@@ -90,6 +108,8 @@ export interface FileRouteTypes {
     | '/api/search'
     | '/docs/$'
     | '/docs/{$}.md'
+    | '/examples/$id'
+    | '/examples/'
     | '/og/docs/$'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -99,6 +119,8 @@ export interface FileRouteTypes {
     | '/api/search'
     | '/docs/$'
     | '/docs/{$}.md'
+    | '/examples/$id'
+    | '/examples'
     | '/og/docs/$'
   id:
     | '__root__'
@@ -108,6 +130,8 @@ export interface FileRouteTypes {
     | '/api/search'
     | '/docs/$'
     | '/docs/{$}.md'
+    | '/examples/$id'
+    | '/examples/'
     | '/og/docs/$'
   fileRoutesById: FileRoutesById
 }
@@ -118,6 +142,8 @@ export interface RootRouteChildren {
   ApiSearchRoute: typeof ApiSearchRoute
   DocsSplatRoute: typeof DocsSplatRoute
   DocsChar123Char125DotmdRoute: typeof DocsChar123Char125DotmdRoute
+  ExamplesIdRoute: typeof ExamplesIdRoute
+  ExamplesIndexRoute: typeof ExamplesIndexRoute
   OgDocsSplatRoute: typeof OgDocsSplatRoute
 }
 
@@ -165,6 +191,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocsChar123Char125DotmdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/examples/': {
+      id: '/examples/'
+      path: '/examples'
+      fullPath: '/examples/'
+      preLoaderRoute: typeof ExamplesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/examples/$id': {
+      id: '/examples/$id'
+      path: '/examples/$id'
+      fullPath: '/examples/$id'
+      preLoaderRoute: typeof ExamplesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/og/docs/$': {
       id: '/og/docs/$'
       path: '/og/docs/$'
@@ -182,6 +222,8 @@ const rootRouteChildren: RootRouteChildren = {
   ApiSearchRoute: ApiSearchRoute,
   DocsSplatRoute: DocsSplatRoute,
   DocsChar123Char125DotmdRoute: DocsChar123Char125DotmdRoute,
+  ExamplesIdRoute: ExamplesIdRoute,
+  ExamplesIndexRoute: ExamplesIndexRoute,
   OgDocsSplatRoute: OgDocsSplatRoute,
 }
 export const routeTree = rootRouteImport

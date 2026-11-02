@@ -2,8 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { themes } from "@zupy/tokens";
 import { Button } from "@zupy/ui";
 import { useState } from "react";
-import { Logo } from "@/components/logo";
-import { githubUrl, withBase } from "@/lib/shared";
+import { SiteHeader } from "@/components/site-header";
+import { withBase } from "@/lib/shared";
 
 export const Route = createFileRoute("/")({
 	component: Home,
@@ -25,23 +25,7 @@ function Home() {
 			data-theme={theme}
 			className="min-h-screen bg-background text-foreground"
 		>
-			<header className="mx-auto flex max-w-6xl items-center justify-between px-4 py-5 sm:px-6">
-				<Link to="/" aria-label="zupy home">
-					<Logo size={40} />
-				</Link>
-				<nav className="flex items-center gap-2">
-					<Button
-						variant="ghost"
-						size="sm"
-						render={<Link to="/docs/$" params={{ _splat: "" }} />}
-					>
-						Docs
-					</Button>
-					<Button variant="secondary" size="sm" render={<a href={githubUrl} />}>
-						GitHub
-					</Button>
-				</nav>
-			</header>
+			<SiteHeader />
 
 			<main className="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
 				<section className="pt-12 pb-16 text-center sm:pt-20">

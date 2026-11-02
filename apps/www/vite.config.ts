@@ -34,6 +34,10 @@ export default defineConfig({
 	server: {
 		port: 3000,
 	},
+	optimizeDeps: {
+		// Start must strip server-only branches before Vite bundles this dependency.
+		exclude: ["@tanstack/start-client-core"],
+	},
 	plugins: [
 		fumadocsMdx(),
 		tailwindcss(),

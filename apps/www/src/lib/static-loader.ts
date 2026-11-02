@@ -8,12 +8,12 @@
  */
 import fs from "node:fs/promises";
 import path from "node:path";
-import { createMiddleware } from "@tanstack/react-start";
 import {
+	createMiddleware,
 	defaultSerovalDeserializerPlugins,
 	getDefaultSerovalPlugins,
 	getSerovalPlugins,
-} from "@tanstack/start-client-core";
+} from "@tanstack/react-start";
 import { fromJSON, toJSONAsync } from "seroval";
 import { basePath } from "@/lib/shared";
 
